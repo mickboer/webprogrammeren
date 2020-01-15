@@ -26,6 +26,20 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
 
+################# TEST STARTPAGINA #################
+@app.route("/", methods=["GET", "POST"])
+def begin():
+
+    return redirect("start")
+
+@app.route("/start", methods=["GET", "POST"])
+def start():
+    """Startpagina"""
+
+    return render_template("start.html")
+
+################# TEST STARTPAGINA #################
+
 
 ##########################   TESTING API  #########
 # TEST API
