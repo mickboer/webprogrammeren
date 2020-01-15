@@ -12,6 +12,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import requests as requests
 import urllib.request as url
 
+
 # Configure application
 app = Flask(__name__)
 
@@ -23,6 +24,13 @@ app.config["TEMPLATES_AUTO_RELOAD"] = True
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
 
+########### TEST STARTPARTINA#########
+@app.route("/login", methods=["GET", "POST"])
+def start():
+    """Test Startpagina"""
+
+    return render_template("start.html")
+######### TEST STARTPAGINA #############
 
 ##########################   TESTING API  #########
 # TEST API
