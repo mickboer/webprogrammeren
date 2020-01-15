@@ -22,6 +22,7 @@ app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
 
+db = SQL("sqlite:///webprogrammeren.db")
 # TO DO: database juist koppelen
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
@@ -67,16 +68,22 @@ def test_api():
 
     return render_template("test_api.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
 
+
 @app.route("/register", methods=["GET", "POST"])
 def register():
     if request.method == "POST":
         username = request.form.get("username")
 
+        if not username:
+            return ("username has to be at least 1 character long")
 
+        result = db.execute("INSERT INTO Useres (username) VALUES (:name)", name=username)
+
+        if not result:
+            return ("Username already in use")
         return redirect("/")
+
     else:
         return render_template("register.html")
 
 ############   END TESTING API    ###############
-
-dfgdyfdgd
