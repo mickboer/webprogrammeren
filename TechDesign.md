@@ -55,6 +55,7 @@ def result():
 registration required
 def update():
  
+ 
 ““  Decorate routes to require registration.”” (helpers)
 @app.route(“/registration_required”)
 def registration_required():
