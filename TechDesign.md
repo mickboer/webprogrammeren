@@ -1,6 +1,12 @@
 
 
 ![](TD_views.png)
+![](TD_1.png)
+![](TD_2.png)
+![](TD_3.png)
+![](TD_4.png)
+![](TD_5.png)
+![](TD_6.png)
 
 Controllers
 
@@ -60,3 +66,7 @@ Def apology():
 ““ Generate photo of given animal. ”” (helpers)
 @app.route(“/generate_jpg”)
 Def generate_jpg():
+
+
+![](TD_API.png)
+
