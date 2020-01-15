@@ -1,7 +1,7 @@
 # Project Animal Kingdom Quiz
-Mick van den Boer
-Tijn Schickendantz
-Tijmen Kort
+Mick van den Boer,
+Tijn Schickendantz,
+Tijmen Kort &
 Justine de Jong
 
 ## Samenvatting
