@@ -12,7 +12,8 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import requests as requests
 import urllib.request as url
 import random
-
+#from matplotlib import pyplot
+from PIL import Image
 from helpers import api_request
 
 # Configure application
@@ -21,6 +22,11 @@ app = Flask(__name__)
 # Ensure templates are auto-reloaded
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
+# Configure session to use filesystem (instead of signed cookies)
+app.config["SESSION_FILE_DIR"] = mkdtemp()
+app.config["SESSION_PERMANENT"] = False
+app.config["SESSION_TYPE"] = "filesystem"
+Session(app)
 
 db = SQL("sqlite:///webprogrammeren.db")
 # TO DO: database juist koppelen
@@ -36,9 +42,9 @@ def begin():
 @app.route("/start", methods=["GET", "POST"])
 def start():
     """Startpagina"""
-
+    #im = Image.open("Dieren.jpg")
+    #im.show("Image")
     return render_template("start.html")
-
 ################# TEST STARTPAGINA #################
 
 
@@ -68,6 +74,15 @@ def test_api():
 
     return render_template("test_api.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
 
+@app.route("/")
+def index():
+    username = session["user_id"]
+    score = db.execute("SELECT score from Users WHERE user_id = :username", username=username)
+
+    if score
+
+
+
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -75,9 +90,9 @@ def register():
         username = request.form.get("username")
 
         if not username:
-            return ("username has to be at least 1 character long")
+            return ("Nickname has to be at least 1 character long")
 
-        result = db.execute("INSERT INTO Useres (username) VALUES (:name)", name=username)
+        result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=username)
 
         if not result:
             return ("Username already in use")
