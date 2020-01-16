@@ -1,13 +1,32 @@
 {% extends "layout.html" %}
 
 {% block title %}
-    Log In
+    Start
 {% endblock %}
 
 {% block main %}
+
+<style>
+body {
+  background-image: url('/static/Dieren.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
+}
+</style>
+
+
     <form action="/start" method="post">
 
+
+        <body>
         <button class="btn btn-primary" type="submit">PLAY</button>
-        <logImg><img src="Dieren.jpg" alt="Dieren" width="500" height="333"></logImg>
+
+
+        </body>
+
+
+
+
     </form>
 {% endblock %}
+
