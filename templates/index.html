@@ -4,7 +4,18 @@
     Index
 {% endblock %}
 
+{% block main %}
+
  <table class="table">
+    <form action="/start" method="post">
+
+        <body>
+
+        <button class="button" type="submit"><img src="/static/startgame.png" width="200" height="40" ><img></button>
+
+        </body>
+
+    </form>
     <tr>
         <tr>Pets</tr>
         <tr>Farm</tr>
@@ -16,3 +27,4 @@
         <tr>Mix it up</tr>
     </tr>
  </table>
+{% endblock %}

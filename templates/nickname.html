@@ -1,4 +1,3 @@
-
 {% extends "layout.html" %}
 
 {% block title %}
@@ -6,10 +5,12 @@
 {% endblock %}
 
 {% block main %}
-<form action="/register" method="post">
+<form action="/nickname" method="post">
+    <body>
     <div class="form-group">
-        <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Nickname" type="text">
+        <input autocomplete="off" autofocus class="form-control" name="nickname" placeholder="Nickname" type="text">
     </div>
-    <button class="btn btn-primary" type="submit">Start</button>
+    <button class="btn btn-primary" type="submit">Submit</button>
+    </body>
 </form>
 {% endblock %}

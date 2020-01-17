@@ -33,72 +33,115 @@ db = SQL("sqlite:///webprogrammeren.db")
 # Configure CS50 Library to use SQLite database
 # db = SQL("sqlite:///finance.db")
 
-################# TEST STARTPAGINA #################
+
+
+@app.route("/index")
+def index():
+
+    return render_template("index.html")
+
+
+
 @app.route("/", methods=["GET", "POST"])
 def begin():
 
     return redirect("start")
 
+# from start to nickname
 @app.route("/start", methods=["GET", "POST"])
 def start():
     """Startpagina"""
-    #im = Image.open("Dieren.jpg")
-    #im.show("Image")
-    return render_template("start.html")
-################# TEST STARTPAGINA #################
-
-
-##########################   TESTING API  #########
-# TEST API
-@app.route("/")
-def index():
-    """Test voor de Unsplash API"""
-
-    return redirect("test_api")
-
-
-
-@app.route("/test_api", methods=["GET", "POST"])
-def test_api():
-    """Test voor de Unsplash API"""
-    animals = ['cat', 'dog', 'lion', 'meerkat', 'dolphin', 'ant', 'jaguar', 'pig', 'spider', 'snake', 'shark', 'whale']
-    animal = random.choice(animals)
-
-    # input = 'https://api.unsplash.com/search/photos?query=' + animal + '&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
-    # r = requests.get(input)
-    # data = r.json()
-    # photo = data['results'][0]['user']
-
-    photo, userlink, name, unsplashlink = api_request(animal)
-
-
-    return render_template("test_api.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
-
-@app.route("/")
-def index():
-    username = session["user_id"]
-    score = db.execute("SELECT score from Users WHERE user_id = :username", username=username)
-
-    if score
-
-
-
-
-@app.route("/register", methods=["GET", "POST"])
-def register():
     if request.method == "POST":
-        username = request.form.get("username")
 
-        if not username:
-            return ("Nickname has to be at least 1 character long")
-
-        result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=username)
-
-        if not result:
-            return ("Username already in use")
-        return redirect("/")
+        return redirect("nickname")
 
     else:
-        return render_template("register.html")
 
-############   END TESTING API    ###############
+        return render_template("start.html")
+
+
+# from nickname to index
+@app.route("/nickname", methods=["GET", "POST"])
+def nickname():
+    """nickname"""
+
+    #for any user_id
+    session.clear()
+
+    if request.method == "POST":
+
+        return redirect("index")
+
+    else:
+
+        return render_template("nickname.html")
+
+
+# from index to search opponent
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    """search opponent"""
+
+    if request.method == "POST":
+
+        return redirect("search")
+
+        # else:
+        #     return render_template("search.html")
+
+
+
+# ##########################   TESTING API  #########
+# # TEST API
+# @app.route("/")
+# def index():
+#     """Test voor de Unsplash API"""
+
+#     return redirect("test_api")
+
+
+
+# @app.route("/test_api", methods=["GET", "POST"])
+# def test_api():
+#     """Test voor de Unsplash API"""
+#     animals = ['cat', 'dog', 'lion', 'meerkat', 'dolphin', 'ant', 'jaguar', 'pig', 'spider', 'snake', 'shark', 'whale']
+#     animal = random.choice(animals)
+
+#     # input = 'https://api.unsplash.com/search/photos?query=' + animal + '&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
+#     # r = requests.get(input)
+#     # data = r.json()
+#     # photo = data['results'][0]['user']
+
+#     photo, userlink, name, unsplashlink = api_request(animal)
+
+
+#     return render_template("test_api.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
+
+# @app.route("/")
+# def index():
+#     username = session["user_id"]
+#     score = db.execute("SELECT score from Users WHERE user_id = :username", username=username)
+
+#     if score
+
+
+
+
+# @app.route("/register", methods=["GET", "POST"])
+# def register():
+#     if request.method == "POST":
+#         username = request.form.get("username")
+
+#         if not username:
+#             return ("Nickname has to be at least 1 character long")
+
+#         result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=username)
+
+#         if not result:
+#             return ("Username already in use")
+#         return redirect("/")
+
+#     else:
+#         return render_template("register.html")
+
+# ############   END TESTING API    ###############
