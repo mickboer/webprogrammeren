@@ -95,14 +95,6 @@ def search():
 
 
 
-# ##########################   TESTING API  #########
-# # TEST API
-# @app.route("/")
-# def index():
-#     """Test voor de Unsplash API"""
-
-#     return redirect("test_api")
-
 
 
 @app.route("/question", methods=["GET", "POST"])
@@ -120,14 +112,6 @@ def question():
 
 
     return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
-
-# @app.route("/")
-# def index():
-#     username = session["user_id"]
-#     score = db.execute("SELECT score from Users WHERE user_id = :username", username=username)
-
-#     if score
-
 
 
 
