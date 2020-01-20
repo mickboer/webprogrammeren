@@ -39,9 +39,12 @@ db = SQL("sqlite:///webprogrammeren.db")
 def index():
 
     if request.method == "POST":
+
         return redirect("search")
     else:
-        return render_template("index.html")
+        dict_levels = {"pets": 0, "farm": 100, "wildlife": 200, "sealife": 300, "insects": 400, "all_levels": 500}
+        current_score = 340
+        return render_template("index.html", dict_levels=dict_levels, current_score=current_score)
 
 
 
