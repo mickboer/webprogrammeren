@@ -5,12 +5,18 @@
 {% endblock %}
 
 {% block main %}
+
+<style>
+    body {
+  background-color: lightblue;
+}
+</style>
 <form action="/nickname" method="post">
     <body>
     <div class="form-group">
         <input autocomplete="off" autofocus class="form-control" name="nickname" placeholder="Nickname" type="text">
     </div>
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="buttons" type="submit">Submit</button>
     </body>
 </form>
 {% endblock %}
