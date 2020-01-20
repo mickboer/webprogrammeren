@@ -35,7 +35,6 @@ db = SQL("sqlite:///webprogrammeren.db")
 # db = SQL("sqlite:///finance.db")
 
 
-
 @app.route("/index", methods=["GET", "POST"])
 def index():
 
@@ -112,11 +111,12 @@ def question():
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain="pets")
         print(animalrows)
 
+        animalname = ""
+        animal = ""
 
-        for i in range(random.randint(0, len(animalrows) + 1)):
-            animalname = i["unsplash"]
-            print(animalname)
-            animal = i["animal"]
+        for i in range(random.randint(0, len(animalrows))):
+            animalname = animalrows[i]["unsplash"]
+            animal = animalrows[i]["animal"]
 
 
         photo, userlink, name, unsplashlink = api_request(animalname)

@@ -6,22 +6,31 @@
 {% endblock %}
 
 {% block main %}
-
+<style>
+    credits {
+    font: 20px Arial;
+    color: #00000;
+    position: static;
+    left: 0px;
+    top: 100px;
+}
+</style>
 
 
 <form action="/question" method="post">
-
-
-    <form action="/question" method="post">
-
+    <body>
+    <button class="button" type="submit">next</button>
 
     <div>
         <img src='{{ photo }}'>
     </div>
 
-    <div>
-        Photo by <a href='{{ userlink }}'>{{ name }}</a> on <a href='{{ unsplash }}'>Unsplash</a>
-    </div
-    </form>
+    <div><credits>
+        Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a>
+        </credits>
+    </div>
+    </body>
+</form>
 
 {% endblock %}
+
