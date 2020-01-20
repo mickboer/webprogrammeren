@@ -5,24 +5,27 @@
 {% endblock %}
 
 {% block main %}
+<div class="header">
+  <h1>Categories</h1>
+  <p>Unlock all categories!</p>
+</div>
+
  <table class="table">
     <form action="/index" method="post">
         <body>
             <table style="width:100%">
+
                 <tr>
-                    LEVELS
+                    <td><button class="buttons" type="submit">PETS</button></td>
+                    <td><button class="buttons" type="submit">SEALIFE</button></td>
                 </tr>
                 <tr>
-                    <td><button class="button" type="submit">PETS</button></td>
-                    <td><button class="button" type="submit">SEALIFE</button></td>
+                    <td><button class="buttons" type="submit">FARM</button></td>
+                    <td><button class="buttons" type="submit">INSECT</button></td>
                 </tr>
                 <tr>
-                    <td><button class="button" type="submit">FARM</button></td>
-                    <td><button class="button" type="submit">INSECT</button></td>
-                </tr>
-                <tr>
-                    <td><button class="button" type="submit">WILDLIFE</button></td>
-                    <td><button class="button" type="submit">MIX IT UP</button></td>
+                    <td><button class="buttons" type="submit">WILDLIFE</button></td>
+                    <td><button class="buttons" type="submit">MIX IT UP</button></td>
                 </tr>
             </table>
         </body>

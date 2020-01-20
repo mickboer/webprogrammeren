@@ -6,17 +6,34 @@
 {% endblock %}
 
 {% block main %}
+<<<<<<< HEAD
+<style>
+    credits {
+    font: 20px Arial;
+    color: #00000;
+    position: static;
+    left: 0px;
+    top: 100px;
+}
+</style>
 
-# LEAVE GAME OPTIE MAKEN NAAR INDEX.HTML
-    <form action="/question" method="post">
+
+=======
+>>>>>>> 2f1add193d6faa183a817cf0f13e1b5bd4d6865f
+<form action="/question" method="post">
+    <body>
+    <button class="button" type="submit">next</button>
 
     <div>
         <img src='{{ photo }}'>
     </div>
 
-    <div>
-        Photo by <a href='{{ userlink }}'>{{ name }}</a> on <a href='{{ unsplash }}'>Unsplash</a>
-    </div
-    </form>
+    <div><credits>
+        Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a>
+        </credits>
+    </div>
+    </body>
+</form>
 
 {% endblock %}
+

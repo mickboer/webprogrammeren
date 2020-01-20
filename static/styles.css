@@ -46,32 +46,28 @@ main img
     max-width: 100%;
 }
 
-a {
-
-    font: 15px Courier New, monospace;
-    position: relative;
-    left: 400px;
-    top: 0px;
-}
 
 
 
-
-
-
-.button {
-  padding: 10px 80px;
-  font-size: 50px;
+    .buttons {
+    margin:5px;
+  padding: 10px 100px;
+  font-size: 45px;
   font-variant: small-caps;
   text-align: center;
   cursor: pointer;
   outline: none;
+  width: 400px;
   color: #FFFFA0;
   background-color: rgba(192, 192, 0, 0.6);
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   box-shadow: 0 3px #999;
-}
+    }
+
+    .buttons:active {
+  transform: translateY(4px);
+    }
 
 .button:hover {background-color: rgba(158, 158, 0, 0.87)}
 
@@ -79,4 +75,8 @@ a {
   background-color: rgba(158, 158, 0, 0.87);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
+}
+
+body {
+  background-color: lightblue;
 }
