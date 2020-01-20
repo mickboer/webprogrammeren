@@ -1,6 +1,7 @@
 # Imports copy van Finance
 import os
 
+
 from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
@@ -74,6 +75,8 @@ def nickname():
 
     if request.method == "POST":
 
+
+
         return redirect("index")
 
     else:
@@ -107,19 +110,24 @@ def search():
 
 @app.route("/question", methods=["GET", "POST"])
 def question():
-    """Test voor de Unsplash API"""
-    animals = ['cat', 'dog', 'lion', 'meerkat', 'dolphin', 'ant', 'jaguar', 'pig', 'spider', 'snake', 'shark', 'whale']
-    animal = random.choice(animals)
+    if request.method == "POST":
 
-    input = 'https://api.unsplash.com/search/photos?query=' + animal + '&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
-    r = requests.get(input)
-    data = r.json()
-    photo = data['results'][0]['user']
-
-    photo, userlink, name, unsplashlink = api_request(animal)
+        animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain="pets")
+        print(animalrows)
 
 
-    return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
+        for i in range(random.randint(0, len(animalrows) + 1)):
+            animalname = i["unsplash"]
+            print(animalname)
+            animal = i["animal"]
+
+
+        photo, userlink, name, unsplashlink = api_request(animalname)
+
+
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
+    else:
+        return render_template("question.html")
 
 # @app.route("/")
 # def index():
