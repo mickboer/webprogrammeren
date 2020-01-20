@@ -35,10 +35,13 @@ db = SQL("sqlite:///webprogrammeren.db")
 
 
 
-@app.route("/index")
+@app.route("/index", methods=["GET", "POST"])
 def index():
 
-    return render_template("index.html")
+    if request.method == "POST":
+        return redirect("search")
+    else:
+        return render_template("index.html")
 
 
 
@@ -46,6 +49,7 @@ def index():
 def begin():
 
     return redirect("start")
+
 
 # from start to nickname
 @app.route("/start", methods=["GET", "POST"])
@@ -84,10 +88,10 @@ def search():
 
     if request.method == "POST":
 
-        return render_template("search.html")
+        return redirect("question")
 
-        # else:
-        #     return render_template("search.html")
+    else:
+        return render_template("search.html")
 
 
 

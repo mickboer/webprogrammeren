@@ -7,41 +7,14 @@
 {% block main %}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-
-body {
+  body {
   background-image: url('/static/Dieren.jpg');
   background-repeat: no-repeat;
   background-size: 100%;
 }
 
-.button{
-  position: fixed;
-  bottom: 300px;
-  right: 550px;
-}
-
-.button {
-  padding: 10px 80px;
-  font-size: 50px;
-  font-variant: small-caps;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  color: #FFFFA0;
-  background-color: rgba(192, 192, 0, 0.6);
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 3px #999;
-}
-
-.button:hover {background-color: rgba(158, 158, 0, 0.87)}
-
-.button:active {
-  background-color: rgba(158, 158, 0, 0.87);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 </style>
+
 
     <form action="/start" method="post">
 
