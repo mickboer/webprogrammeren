@@ -5,6 +5,28 @@
 {% endblock %}
 
 {% block main %}
+
+<style>
+    .buttons {
+  padding: 10px 100px;
+  font-size: 45px;
+  font-variant: small-caps;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  width: 400px;
+  color: #FFFFA0;
+  background-color: rgba(192, 192, 0, 0.6);
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 3px #999;
+    }
+
+    .buttons:active {
+  transform: translateY(4px);
+    }
+</style>
+
  <table class="table">
     <form action="/index" method="post">
         <body>
@@ -13,16 +35,16 @@
                     LEVELS
                 </tr>
                 <tr>
-                    <td><button class="button" type="submit">PETS</button></td>
-                    <td><button class="button" type="submit">SEALIFE</button></td>
+                    <td><button class="buttons" type="submit">PETS</button></td>
+                    <td><button class="buttons" type="submit">SEALIFE</button></td>
                 </tr>
                 <tr>
-                    <td><button class="button" type="submit">FARM</button></td>
-                    <td><button class="button" type="submit">INSECT</button></td>
+                    <td><button class="buttons" type="submit">FARM</button></td>
+                    <td><button class="buttons" type="submit">INSECT</button></td>
                 </tr>
                 <tr>
-                    <td><button class="button" type="submit">WILDLIFE</button></td>
-                    <td><button class="button" type="submit">MIX IT UP</button></td>
+                    <td><button class="buttons" type="submit">WILDLIFE</button></td>
+                    <td><button class="buttons" type="submit">MIX IT UP</button></td>
                 </tr>
             </table>
         </body>
