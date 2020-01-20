@@ -120,8 +120,21 @@ def question():
     return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
 
 
+#def check_score():
+    #username = session["id"]
+    #score = db.execute("SELECT Score FROM users WHERE username=:username", username=username)
 
-# @app.route("/register", methods=["GET", "POST"])
+    #dict_levels = {"pets": 0, "farm": 100, "wildlife": 200, "sealife": 300, "insects": 400, "all_levels": 500}
+    #score = 340
+    #latest_level = "pets"
+    #for key, value in dict_levels.items():
+        #if score >= value:
+           # latest_level = key
+    #print(latest_level)
+    #return render_template("index.html", level=latest_level)
+
+
+#app.route("/register", methods=["GET", "POST"])
 # def register():
 #     if request.method == "POST":
 #         username = request.form.get("username")
