@@ -5,22 +5,27 @@
 {% endblock %}
 
 {% block main %}
-
  <table class="table">
     <form action="/index" method="post">
-
         <body>
-
-        <button class="button" type="submit">PETS</button>
-        <button class="button" type="submit">FARM ANIMALS</button>
-        <button class="button" type="submit">WILDLIFE</button>
-        <button class="button" type="submit">SEALIFE</button>
-        <button class="button" type="submit">INSECT</button>
-        <button class="button" type="submit">MIX IT UP</button>
-
+            <table style="width:100%">
+                <tr>
+                    LEVELS
+                </tr>
+                <tr>
+                    <td><button class="button" type="submit">PETS</button></td>
+                    <td><button class="button" type="submit">SEALIFE</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" type="submit">FARM</button></td>
+                    <td><button class="button" type="submit">INSECT</button></td>
+                </tr>
+                <tr>
+                    <td><button class="button" type="submit">WILDLIFE</button></td>
+                    <td><button class="button" type="submit">MIX IT UP</button></td>
+                </tr>
+            </table>
         </body>
-
     </form>
-
  </table>
 {% endblock %}
