@@ -84,7 +84,7 @@ def search():
 
     if request.method == "POST":
 
-        return redirect("search")
+        return render_template("search.html")
 
         # else:
         #     return render_template("search.html")
