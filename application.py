@@ -68,17 +68,23 @@ def start():
 @app.route("/nickname", methods=["GET", "POST"])
 def nickname():
     """nickname"""
-
-    #for any user_id
-    session.clear()
-
     if request.method == "POST":
+        nickname = request.form.get("nickname")
 
+        if not nickname:
+            return ("Nickname has to be at least 1 character long")
+
+        result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=nickname)
+
+        if not result:
+            return ("Nickname already in use")
         return redirect("index")
 
     else:
-
         return render_template("nickname.html")
+    #for any user_id
+    session.clear()
+
 
 
 # from index to search opponent
