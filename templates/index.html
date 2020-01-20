@@ -5,35 +5,16 @@
 {% endblock %}
 
 {% block main %}
-
-<style>
-    .buttons {
-  padding: 10px 100px;
-  font-size: 45px;
-  font-variant: small-caps;
-  text-align: center;
-  cursor: pointer;
-  outline: none;
-  width: 400px;
-  color: #FFFFA0;
-  background-color: rgba(192, 192, 0, 0.6);
-  border: none;
-  border-radius: 12px;
-  box-shadow: 0 3px #999;
-    }
-
-    .buttons:active {
-  transform: translateY(4px);
-    }
-</style>
+<div class="header">
+  <h1>Categories</h1>
+  <p>Unlock all categories!</p>
+</div>
 
  <table class="table">
     <form action="/index" method="post">
         <body>
             <table style="width:100%">
-                <tr>
-                    LEVELS
-                </tr>
+
                 <tr>
                     <td><button class="buttons" type="submit">PETS</button></td>
                     <td><button class="buttons" type="submit">SEALIFE</button></td>
