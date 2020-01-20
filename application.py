@@ -105,21 +105,21 @@ def search():
 
 
 
-# @app.route("/test_api", methods=["GET", "POST"])
-# def test_api():
-#     """Test voor de Unsplash API"""
-#     animals = ['cat', 'dog', 'lion', 'meerkat', 'dolphin', 'ant', 'jaguar', 'pig', 'spider', 'snake', 'shark', 'whale']
-#     animal = random.choice(animals)
+@app.route("/question", methods=["GET", "POST"])
+def question():
+    """Test voor de Unsplash API"""
+    animals = ['cat', 'dog', 'lion', 'meerkat', 'dolphin', 'ant', 'jaguar', 'pig', 'spider', 'snake', 'shark', 'whale']
+    animal = random.choice(animals)
 
-#     # input = 'https://api.unsplash.com/search/photos?query=' + animal + '&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
-#     # r = requests.get(input)
-#     # data = r.json()
-#     # photo = data['results'][0]['user']
+    input = 'https://api.unsplash.com/search/photos?query=' + animal + '&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
+    r = requests.get(input)
+    data = r.json()
+    photo = data['results'][0]['user']
 
-#     photo, userlink, name, unsplashlink = api_request(animal)
+    photo, userlink, name, unsplashlink = api_request(animal)
 
 
-#     return render_template("test_api.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
+    return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
 
 # @app.route("/")
 # def index():
