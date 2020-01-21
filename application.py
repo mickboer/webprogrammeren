@@ -13,6 +13,7 @@ from werkzeug.security import check_password_hash, generate_password_hash
 import requests as requests
 import urllib.request as url
 import random
+
 #from matplotlib import pyplot
 from PIL import Image
 from helpers import api_request
@@ -102,6 +103,7 @@ def search():
         return redirect("question")
 
     else:
+
         return render_template("search.html")
 
 
@@ -112,29 +114,32 @@ def search():
 def question():
     if request.method == "GET":
 
+        # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain="pets")
-        print(animalrows)
+        quiz = random.sample(animalrows, 10)
+        print(quiz)
+        # Slaat huidige game data op
+        session["game_data"] = {"round_number": 1, "rounds": quiz}
 
-        animalname = ""
-        animal = ""
+        # Kiest eerste dier uit rij voor game display
+        animalname = session["game_data"]["rounds"][0]["animal"]
+        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
+        round_number = session["game_data"]["round_number"]
 
-        for i in range(10):
-            random.randint(0, len(animalrows))
-            animalname = animalrows[i]["unsplash"]
-            animal = animalrows[i]["animal"]
-
-        #Maak een list aan voor de vakjes van het dier
-        animalname = "snake"
-        word_len = [letter for letter in iter(animalname)]
-
-        photo, userlink, name, unsplashlink = api_request(animalname)
+        # Haalt de foto informatie op
+        # API FUNCTION
+        photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
 
-
-        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=word_len)
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname), round_number=round_number)
 
     if request.method == "POST":
-        return render_template("question.html")
+
+        # Get the answer from the input form
+
+
+
+        return render_template("test.html", answer=answer)
 
 
 

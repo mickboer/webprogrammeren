@@ -29,30 +29,28 @@ input[type=text] {
   align-items: center;
 }
 </style>
+
+
 <body>
-<p>"{{ word_len }}"</p>
-
-
-<form action="/question" method="post">
-
-    <button class="button" type="submit">play</button>
-
+    <p style="font-size:160%">{{ round_number }}</p>
     <div>
         <img src='{{ photo }}'>
     </div>
 
-    <div><credits>
-        Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a>
+    <div>
+        <credits style="font-size:50%">
+            Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a>
         </credits>
     </div>
 
-</form>
-<form>
-    {% for number in word_len %}
-        <input class="inputbox" type="text" id="box1" name="box1" autocomplete="off" maxlength="1"required>
-    {% endfor %}
-    <button type="submit" id="submit">Submit</button>
-</form>
+
+    <form action="/question" method="post">
+            <p name="var" hidden>"{{ word_len }}"</p>
+        {% for number in range(0, word_len) %}
+            <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" maxlength="1"required>
+        {% endfor %}
+        <button type="submit" id="submit">Submit</button>
+    </form>
 </body>
 
 
