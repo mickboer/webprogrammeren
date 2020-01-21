@@ -39,9 +39,12 @@ db = SQL("sqlite:///webprogrammeren.db")
 def index():
 
     if request.method == "POST":
+
         return redirect("search")
     else:
-        return render_template("index.html")
+        dict_levels = {"pets": 0, "farm": 100, "wildlife": 200, "sealife": 300, "insects": 400, "all_levels": 500}
+        current_score = 340
+        return render_template("index.html", dict_levels=dict_levels, current_score=current_score)
 
 
 
@@ -128,8 +131,21 @@ def question():
 
 
 
+#def check_score():
+    #username = session["id"]
+    #score = db.execute("SELECT Score FROM users WHERE username=:username", username=username)
 
-# @app.route("/register", methods=["GET", "POST"])
+    #dict_levels = {"pets": 0, "farm": 100, "wildlife": 200, "sealife": 300, "insects": 400, "all_levels": 500}
+    #score = 340
+    #latest_level = "pets"
+    #for key, value in dict_levels.items():
+        #if score >= value:
+           # latest_level = key
+    #print(latest_level)
+    #return render_template("index.html", level=latest_level)
+
+
+#app.route("/register", methods=["GET", "POST"])
 # def register():
 #     if request.method == "POST":
 #         username = request.form.get("username")

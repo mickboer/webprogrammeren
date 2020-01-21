@@ -16,16 +16,15 @@
             <table style="width:100%">
 
                 <tr>
-                    <td><button class="buttons" type="submit">PETS</button></td>
-                    <td><button class="buttons" type="submit">SEALIFE</button></td>
-                </tr>
-                <tr>
-                    <td><button class="buttons" type="submit">FARM</button></td>
-                    <td><button class="buttons" type="submit">INSECT</button></td>
-                </tr>
-                <tr>
-                    <td><button class="buttons" type="submit">WILDLIFE</button></td>
-                    <td><button class="buttons" type="submit">MIX IT UP</button></td>
+                    {% for level, score in dict_levels.items() %}
+                        {% if current_score < score %}
+                            <tr><td><input type="button" value="{{ level }} (locked)" type="button"></td></tr>
+                            <tr><td><button class="button" type="button">{{ level }} (locked)</button></td></tr>
+                        {% else %}
+                            <tr><td><input type="submit" value="{{ level }}"></td></tr>
+                            <tr><td><button class="button" type="submit" data-level="{{ level }}">{{ level }}</button></td></tr>
+                        {% endif %}
+                    {% endfor %}
                 </tr>
             </table>
         </body>
