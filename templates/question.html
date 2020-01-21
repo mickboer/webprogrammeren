@@ -15,10 +15,26 @@
     left: 0px;
     top: 100px;
 }
+
+input[type=text] {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 50px;
+  margin: 20px ;
+  box-sizing: border-box;
+  border: 10px solid green;
+  border-radius: 10px;
+  display: inline-block;
+  align-items: center;
+}
 </style>
+<body>
+<p>"{{ word_len }}"</p>
+
 
 <form action="/question" method="post">
-    <body>
+
     <button class="button" type="submit">play</button>
 
     <div>
@@ -29,8 +45,17 @@
         Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a>
         </credits>
     </div>
-    </body>
+
 </form>
+<form>
+    {% for number in word_len %}
+        <input class="inputbox" type="text" id="box1" name="box1" autocomplete="off" maxlength="1"required>
+    {% endfor %}
+    <button type="submit" id="submit">Submit</button>
+</form>
+</body>
+
+
 
 {% endblock %}
 

@@ -126,8 +126,9 @@ def question():
 
         photo, userlink, name, unsplashlink = api_request(animalname)
 
+        word_len = [1,2,3,4]
 
-        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink)
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=word_len)
     else:
         return render_template("question.html")
 
