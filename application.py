@@ -110,7 +110,7 @@ def search():
 
 @app.route("/question", methods=["GET", "POST"])
 def question():
-    if request.method == "POST":
+    if request.method == "GET":
 
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain="pets")
         print(animalrows)
@@ -123,13 +123,17 @@ def question():
             animalname = animalrows[i]["unsplash"]
             animal = animalrows[i]["animal"]
 
+        #Maak een list aan voor de vakjes van het dier
+        animalname = "snake"
+        word_len = [letter for letter in iter(animalname)]
 
         photo, userlink, name, unsplashlink = api_request(animalname)
 
-        word_len = [1,2,3,4]
+
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=word_len)
-    else:
+
+    if request.method == "POST":
         return render_template("question.html")
 
 
