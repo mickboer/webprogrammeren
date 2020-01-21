@@ -7,32 +7,11 @@
 
 {% block main %}
 
-<style>
-    credits {
-    font: 20px Arial;
-    color: #00000;
-    position: static;
-    left: 0px;
-    top: 100px;
-}
 
-input[type=text] {
-  width: 100px;
-  height: 100px;
-  text-align: center;
-  font-size: 50px;
-  margin: 20px ;
-  box-sizing: border-box;
-  border: 10px solid green;
-  border-radius: 10px;
-  display: inline-block;
-  align-items: center;
-}
-</style>
 
 
 <body>
-    <p style="font-size:160%">{{ round_number }}</p>
+    <p style="font-size:160%">VRAAG {{ round_number }}</p>
     <div>
         <img src='{{ photo }}'>
     </div>
@@ -44,14 +23,23 @@ input[type=text] {
     </div>
 
 
-    <form action="/question" method="post">
-            <p name="var" hidden>"{{ word_len }}"</p>
+    <form name="user_input" action="/question" method="post">
+
         {% for number in range(0, word_len) %}
-            <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" maxlength="1"required>
+            <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"required>
         {% endfor %}
         <button type="submit" id="submit">Submit</button>
     </form>
+
+    <script>
+        function autotab(current,to){
+            if (current.getAttribute && current.value.length==current.getAttribute("maxlength")) {
+                to.focus()
+                }
+        }
+    </script>
 </body>
+
 
 
 

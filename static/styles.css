@@ -96,4 +96,18 @@ main img
 
 body {background-color: lightblue;}
 
-.textunlock
+/*.textunlock*/
+
+/*Style voor de input formulieren in het spel*/
+main input[type=text] {
+  width: 100px;
+  height: 100px;
+  text-align: center;
+  font-size: 50px;
+  margin: 20px ;
+  box-sizing: border-box;
+  border: 10px solid green;
+  border-radius: 10px;
+  display: inline-block;
+  align-items: center;
+}

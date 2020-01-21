@@ -41,7 +41,18 @@ def index():
 
     if request.method == "POST":
 
+        level = request.form.get("level")
+        print(level)
+
+        # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
+        animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
+        quiz = random.sample(animalrows, 3)
+        print(quiz)
+        # Slaat huidige game data op
+        session["game_data"] = {"round_number": 1, "rounds": quiz}
+
         return redirect("search")
+
     else:
         dict_level123 = {"pets": 0, "farm": 100, "wildlife": 200}
         dict_level456 = {"sealife": 300, "insects": 400, "mix it up": 500}
@@ -98,13 +109,13 @@ def nickname():
 def search():
     """search opponent"""
 
-    if request.method == "POST":
+    # if request.method == "POST":
 
-        return redirect("question")
+    return redirect("question")
 
-    else:
+    # else:
 
-        return render_template("search.html")
+    #     return render_template("search.html")
 
 
 
@@ -113,13 +124,6 @@ def search():
 @app.route("/question", methods=["GET", "POST"])
 def question():
     if request.method == "GET":
-
-        # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
-        animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain="pets")
-        quiz = random.sample(animalrows, 3)
-        print(quiz)
-        # Slaat huidige game data op
-        session["game_data"] = {"round_number": 1, "rounds": quiz}
 
         # Kiest eerste dier uit rij voor game display
         animalname = session["game_data"]["rounds"][0]["animal"]
@@ -172,7 +176,7 @@ def question():
 
 
 
-        # return render_template("test.html", answer=answer)
+
 
 
 
