@@ -50,8 +50,8 @@ main img
 
 .buttons {
     margin:5px;
-    padding: 10px 100px;
-    font-size: 45px;
+    padding: 20px 100px;
+    font-size: 25px;
     font-variant: small-caps;
     text-align: center;
     cursor: pointer;
@@ -70,8 +70,8 @@ main img
 
 .lockbuttons {
     margin:5px;
-    padding: 10px 100px;
-    font-size: 45px;
+    padding: 20px 100px;
+    font-size: 25px;
     font-variant: small-caps;
     text-align: center;
     cursor: pointer;
@@ -95,3 +95,5 @@ main img
 }
 
 body {background-color: lightblue;}
+
+.textunlock
