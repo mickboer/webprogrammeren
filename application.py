@@ -42,9 +42,10 @@ def index():
 
         return redirect("search")
     else:
-        dict_levels = {"pets": 0, "farm": 100, "wildlife": 200, "sealife": 300, "insects": 400, "all_levels": 500}
+        dict_level123 = {"pets": 0, "farm": 100, "wildlife": 200}
+        dict_level456 = {"sealife": 300, "insects": 400, "mix it up": 500}
         current_score = 340
-        return render_template("index.html", dict_levels=dict_levels, current_score=current_score)
+        return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score)
 
 
 
@@ -117,7 +118,8 @@ def question():
         animalname = ""
         animal = ""
 
-        for i in range(random.randint(0, len(animalrows))):
+        for i in range(10):
+            random.randint(0, len(animalrows))
             animalname = animalrows[i]["unsplash"]
             animal = animalrows[i]["animal"]
 
