@@ -116,7 +116,7 @@ def question():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain="pets")
-        quiz = random.sample(animalrows, 10)
+        quiz = random.sample(animalrows, 3)
         print(quiz)
         # Slaat huidige game data op
         session["game_data"] = {"round_number": 1, "rounds": quiz}
@@ -135,11 +135,44 @@ def question():
 
     if request.method == "POST":
 
-        # Get the answer from the input form
+        if len(session["game_data"]["rounds"]) == 1:
+            return render_template("test.html", answer="YOU WON THE GAME, or not")
+
+        # Session data ophalen
+        animalname = session["game_data"]["rounds"][0]["animal"]
+        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
+
+
+        # Antwoord van gebruiker ophalen
+        user_input = ""
+        for letter in range(len(animalname)):
+            user_input += request.form.get("box" + str(letter))
+
+        # Valideert antwoord TOEVOEGEN STUK JUSTINE
+        # En score toevoegen, TOEVOEGEN STUK JUSTINE
+        if animalname == user_input.lower():
+            answer = True
+        else:
+            answer = False
+
+        # Volgende vraag opzetten
+        session["game_data"]["rounds"].remove(session["game_data"]["rounds"][0])
+        session["game_data"]["round_number"] += 1
+
+        # Ronde data opslaan
+        animalname = session["game_data"]["rounds"][0]["animal"]
+        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
+        round_number = session["game_data"]["round_number"]
+
+        photo, userlink, name, unsplashlink = api_request(unsplashanimal)
+
+
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname), round_number=round_number)
 
 
 
-        return render_template("test.html", answer=answer)
+
+        # return render_template("test.html", answer=answer)
 
 
 
