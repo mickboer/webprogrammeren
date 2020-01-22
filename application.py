@@ -46,7 +46,7 @@ def index():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
-        quiz = random.sample(animalrows, 3)
+        quiz = random.sample(animalrows, 10)
         print(quiz)
         # Slaat huidige game data op
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}

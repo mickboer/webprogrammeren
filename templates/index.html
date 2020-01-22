@@ -4,16 +4,23 @@
     Index
 {% endblock %}
 
+
 {% block main %}
+
+<head>
+    <button class= "showbutton" type="button" >score: {{ current_score }}</button>
+</head>
+
 <div id="bg"></div>
 <div class="header">
   <h1>Categories</h1>
   <p>Unlock all categories!</p>
 </div>
 
- <table class="table">
-    <form action="/index" method="post">
-        <body>
+<body>
+
+    <table class="table">
+        <form action="/index" method="post">
             <table style="width:100%">
 
                 <td>
@@ -43,7 +50,7 @@
                     {% endfor %}
                 </td>
             </table>
-        </body>
+        </table>
     </form>
- </table>
+ </body>
 {% endblock %}

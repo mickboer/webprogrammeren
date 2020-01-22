@@ -47,7 +47,6 @@ main img
 }
 
 
-
 .buttons {
     margin:5px;
     padding: 20px 100px;
@@ -57,15 +56,14 @@ main img
     cursor: pointer;
     outline: none;
     width: 400px;
-    color: #FFFFA0;
-    background-color: rgba(192, 192, 0, 0.6);
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
     border: none;
     border-radius: 12px;
     box-shadow: 0 3px #999;
     }
 
 .buttons:active {transform: translateY(4px);}
-
 
 
 .lockbuttons {
@@ -77,8 +75,8 @@ main img
     cursor: pointer;
     outline: none;
     width: 400px;
-    color: #FFFFA0;
-    background-color: rgba(158, 158, 0, 0.2);
+    color: MintCream;
+    background-color:rgb(154, 205, 50, 0.3);
     border: none;
     border-radius: 12px;
     box-shadow: 0 3px #999;
@@ -86,10 +84,11 @@ main img
 
 .lockbuttons:active {transform: translateY(4px);}
 
-.button:hover {background-color: rgba(158, 158, 0, 0.87)}
+.buttons:hover {background-color: rgba(154, 205, 50, 0.87)}
+.button:hover {background-color: rgba(154, 205, 50, 0.87)}
 
 .button:active {
-  background-color: rgba(158, 158, 0, 0.87);
+  background-color: rgba(154, 205, 50, 0.50);
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
@@ -106,9 +105,66 @@ main .inputbox {
   font-size: 50px;
   margin: 20px ;
   box-sizing: border-box;
-  border: 10px solid green;
+  border: 7px solid yellowgreen;
   border-radius: 10px;
   display: inline-block;
   align-items: center;
-  background-color: lightblue;
+  background-color: MintCream;
 }
+
+.imgborder
+{
+  border: 5px double YellowGreen;
+
+}
+
+.submitbutton
+{
+    margin:5px;
+    font-size: 12px;
+    font-variant: small-caps;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+
+.showbutton {
+    margin:100px;
+    font-size: 25px;
+    font-variant: small-caps;
+    text-align: center;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+
+
+.startbutton
+{
+    margin:80px;
+    font-size: 12px;
+    font-variant: small-caps;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+.startbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
