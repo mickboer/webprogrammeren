@@ -146,3 +146,10 @@ main .inputbox {
 }
 
 .startbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
+
+ .kingdom {
+          background-image: url('/static/dieren2.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }

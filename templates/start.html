@@ -14,14 +14,6 @@
 
         <title>Animal Kingdom Quiz: Start {% block title %}{% endblock %}</title>
         {% block main %}
-        <style>
-        body {
-          background-image: url('/static/dieren2.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
-        }
-        </style>
 
     </head>
 
@@ -29,13 +21,14 @@
 
     <form action="/start" method="post">
 
-        <body>
+        <body class= kingdom>
 
         <center><img src="/static/logo.png" width="1000" height="100" ><img></center>
 
         <center><button class="startbutton" type="submit"><img src="/static/newstart.png" width="300" height="100" ><img></button></center>
 
         </body>
+
 
     </form>
 {% endblock %}
