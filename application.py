@@ -47,7 +47,7 @@ def index():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
-        quiz = random.sample(animalrows, 5)
+        quiz = random.sample(animalrows, 3)
         print(quiz)
         # Slaat huidige game data op
         session["game_data"] = {"round_number": 1, "rounds": quiz, "score": []}
@@ -141,23 +141,8 @@ def question():
 
     if request.method == "POST":
 
-        # als je bij de laatste vraag bent dan
-        if len(session["game_data"]["rounds"]) == 1:
-
-            # wordt de gespeelde game uit de db gehaald
-            db.execute("DELETE FROM game WHERE nickname = :nickname",
-                       nickname=session["nickname"])
-
-            return render_template("winner.html", answer="YOU WON THE GAME, or not")
-
-        # Session data ophalen
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-        round_number = session["game_data"]["round_number"]
-        nickname = session["nickname"]
-
         # Haalt session[game_data] op uit helpers.py (twee variabelen)
-        animalname, unsplashanima = game_data(2)
+        animalname, unsplashanimal = game_data(2)
 
 
         # Antwoord van gebruiker ophalen
@@ -169,25 +154,16 @@ def question():
         # Valideert antwoord en voegt score toe
         if animalname == user_input.lower():
             session["game_data"]["score"].append(1)
-            answer = True
+
         elif animalname != user_input.lower():
             session["game_data"]["score"].append(0)
-            answer = False
 
-        # check's users gamestatus
-        statusrow = db.execute("SELECT status FROM game WHERE nickname = :nickname", nickname=nickname)
 
-        #if user just started the game
-        if len(statusrow) == 0:
+        # Als game klaar wordt doorverwezen naar winner/loser pagina
+        if len(session["game_data"]["rounds"]) == 1:
 
-            # insert nickname and status in db
-            db.execute("INSERT INTO game (nickname, status) VALUES (:nickname, :status )", nickname=nickname, status=str(int(answer)))
-        else:
-            # previous answers + new answer
-            status = str(statusrow[0]["status"]) + str(int(answer))
+            return render_template("winner.html", answer="YOU WON THE GAME, or not")
 
-            # updates the status with new answer
-            db.execute("UPDATE game SET status = :status WHERE nickname = :nickname", status=status, nickname=nickname)
 
         # Volgende vraag opzetten
         session["game_data"]["rounds"].remove(session["game_data"]["rounds"][0])
