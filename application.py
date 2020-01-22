@@ -6,6 +6,7 @@ from cs50 import SQL
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 from flask_session import Session
 from tempfile import mkdtemp
+import collections
 from werkzeug.exceptions import default_exceptions, HTTPException, InternalServerError
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -135,59 +136,63 @@ def question():
         # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
+        # kies een random game id
+        game_id = id=random.randint(1, 6)
+
+        #onthoud game id
+        session["game_id"] = game_id
+
+        #selecteer een opponent op basis van game id
+        opponentrow = db.execute("SELECT nickname FROM game WHERE game_id = :id", id=random.randint(1, 5))
+
+        #onthoud nickname opponent
+        session["opponent"] = opponentrow[0]["nickname"]
+
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
-            round_number=round_number)
+            round_number=round_number, opponent=session["opponent"])
 
     if request.method == "POST":
 
         # als je bij de laatste vraag bent dan
         if len(session["game_data"]["rounds"]) == 1:
 
-            # wordt de gespeelde game uit de db gehaald
-            db.execute("DELETE FROM game WHERE nickname = :nickname",
-                       nickname=session["nickname"])
+            # haalt opponent bot uit database
+            opponentrow = db.execute("SELECT nickname FROM game WHERE game_id = :id", id=session["game_id"])
 
-            return render_template("winner.html", answer="YOU WON THE GAME, or not")
+            # telt hoeveel 1en in score
+            opponent = opponentrow[0]["status"]
+            user = str(session["game_data"]["score"])
+            one = "1"
+
+            if opponent.count(one) > user.count(one):
+                return render_template("winner.html", answer="YOU LOST THE GAME")
+
+            if opponent.count(one) < user.count(one):
+                return render_template("winner.html", answer="YOU WON THE GAME")
+
+            else:
+                return render_template("winner.html", answer="IT'S A TIE")
+
 
         # Session data ophalen
         animalname = session["game_data"]["rounds"][0]["animal"]
         unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
         round_number = session["game_data"]["round_number"]
-        nickname = session["nickname"]
 
         # Haalt session[game_data] op uit helpers.py (twee variabelen)
         animalname, unsplashanima = game_data(2)
-
 
         # Antwoord van gebruiker ophalen
         user_input = ""
         for letter in range(len(animalname)):
             user_input += request.form.get("box" + str(letter))
 
-
         # Valideert antwoord en voegt score toe
         if animalname == user_input.lower():
             session["game_data"]["score"].append(1)
-            answer = True
         elif animalname != user_input.lower():
             session["game_data"]["score"].append(0)
-            answer = False
-
-        # check's users gamestatus
-        statusrow = db.execute("SELECT status FROM game WHERE nickname = :nickname", nickname=nickname)
-
-        #if user just started the game
-        if len(statusrow) == 0:
-
-            # insert nickname and status in db
-            db.execute("INSERT INTO game (nickname, status) VALUES (:nickname, :status )", nickname=nickname, status=str(int(answer)))
-        else:
-            # previous answers + new answer
-            status = str(statusrow[0]["status"]) + str(int(answer))
-
-            # updates the status with new answer
-            db.execute("UPDATE game SET status = :status WHERE nickname = :nickname", status=status, nickname=nickname)
 
         # Volgende vraag opzetten
         session["game_data"]["rounds"].remove(session["game_data"]["rounds"][0])
@@ -201,7 +206,7 @@ def question():
 
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
-            word_len=len(animalname), round_number=round_number, score=score)
+            word_len=len(animalname), round_number=round_number, score=score, opponent=session["opponent"])
 
 
 
