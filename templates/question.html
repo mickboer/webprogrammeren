@@ -11,7 +11,11 @@
 
 
 <body>
+
     <p style="font-size:120%"> QUESTION {{ round_number }}</p>
+
+    <p style="font-size:120%">CURRENT SCORE {{ score }}</p>
+
     <div>
         <img src='{{ photo }}'>
     </div>
@@ -30,6 +34,7 @@
         {% endfor %}
         <button type="submit" id="submit">Submit</button>
     </form>
+
 
     <script>
         function autotab(current,to){

@@ -3,7 +3,6 @@
 <html lang="en">
 
     <head>
-
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,6 +14,14 @@
 
         <title>Animal Kingdom Quiz: Start {% block title %}{% endblock %}</title>
         {% block main %}
+        <style>
+        body {
+          background-image: url('/static/dieren2.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }
+        </style>
 
     </head>
 
@@ -23,6 +30,8 @@
     <form action="/start" method="post">
 
         <body>
+
+        <center><img src="/static/logo.png" width="1000" height="100" ><img></center>
        <center></center> <img src="/static/logo.png" width="500" height="100" ><img></center>
         <center><button class="buttons" type="submit"><img src="/static/startgame.png" width="200" height="40" ><img></button></center>
 

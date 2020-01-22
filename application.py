@@ -17,6 +17,7 @@ import random
 #from matplotlib import pyplot
 from PIL import Image
 from helpers import api_request
+from helpers import game_data
 
 # Configure application
 app = Flask(__name__)
@@ -49,7 +50,7 @@ def index():
         quiz = random.sample(animalrows, 5)
         print(quiz)
         # Slaat huidige game data op
-        session["game_data"] = {"round_number": 1, "rounds": quiz}
+        session["game_data"] = {"round_number": 1, "rounds": quiz, "score": []}
 
 
         return redirect("search")
@@ -128,17 +129,15 @@ def question():
 
     if request.method == "GET":
 
-        # Kiest eerste dier uit rij voor game display
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-        round_number = session["game_data"]["round_number"]
+        # Haalt session[game_data] op uit helpers.py (3 variabelen)
+        animalname, unsplashanimal, round_number = game_data(3)
 
-        # Haalt de foto informatie op
-        # API FUNCTION
+        # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
 
-        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname), round_number=round_number)
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
+            round_number=round_number)
 
     if request.method == "POST":
 
@@ -157,15 +156,22 @@ def question():
         round_number = session["game_data"]["round_number"]
         nickname = session["nickname"]
 
+        # Haalt session[game_data] op uit helpers.py (twee variabelen)
+        animalname, unsplashanima = game_data(2)
+
+
         # Antwoord van gebruiker ophalen
         user_input = ""
         for letter in range(len(animalname)):
             user_input += request.form.get("box" + str(letter))
 
-        #checks if answer is correct
+
+        # Valideert antwoord en voegt score toe
         if animalname == user_input.lower():
+            session["game_data"]["score"].append(1)
             answer = True
-        else:
+        elif animalname != user_input.lower():
+            session["game_data"]["score"].append(0)
             answer = False
 
         # check's users gamestatus
@@ -187,15 +193,15 @@ def question():
         session["game_data"]["rounds"].remove(session["game_data"]["rounds"][0])
         session["game_data"]["round_number"] += 1
 
-        # Ronde data opslaan
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-        round_number = session["game_data"]["round_number"]
+        # Haalt session[game_data] op uit helpers.py (4 variabelen)
+        animalname, unsplashanimal, round_number, score = game_data(4)
 
+        # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
 
-        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname), round_number=round_number)
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
+            word_len=len(animalname), round_number=round_number, score=score)
 
 
 

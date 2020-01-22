@@ -99,7 +99,7 @@ body {background-color: lightblue;}
 /*.textunlock*/
 
 /*Style voor de input formulieren in het spel*/
-main input[type=text] {
+main .inputbox {
   width: 100px;
   height: 100px;
   text-align: center;
@@ -110,4 +110,5 @@ main input[type=text] {
   border-radius: 10px;
   display: inline-block;
   align-items: center;
+  background-color: lightblue;
 }
