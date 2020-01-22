@@ -35,8 +35,6 @@ Session(app)
 db = SQL("sqlite:///webprogrammeren.db")
 # TO DO: database juist koppelen
 # Configure CS50 Library to use SQLite database
-# db = SQL("sqlite:///finance.db")
-
 
 @app.route("/index", methods=["GET", "POST"])
 def index():
@@ -147,7 +145,6 @@ def question():
 
         #onthoud nickname opponent
         session["opponent"] = opponentrow[0]["nickname"]
-
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"])
