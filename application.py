@@ -179,14 +179,15 @@ def question():
 
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
-            word_len=len(animalname), round_number=round_number, score=score, opponent=session["opponent"])
+            word_len=len(animalname), round_number=round_number, score=score, opponent=session["opponent"]["nickname"])
 
 
-# @ WINNER PAGE.
+#@app.route("/winner", methods=["GET", "POST"])
 #  # telt hoeveel 1en in score
-#             opponent = opponentrow[0]["status"]
-#             user = str(session["game_data"]["score"])
-#             one = "1"
+
+             #opponent = opponentrow[0]["status"]
+             #user = str(session["game_data"]["score"])
+             #one = "1"
 
 #             if opponent.count(one) > user.count(one):
 #                 return render_template("winner.html", answer="YOU LOST THE GAME")
