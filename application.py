@@ -46,7 +46,11 @@ def index():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
+<<<<<<< HEAD
         quiz = random.sample(animalrows, 10)
+=======
+        quiz = random.sample(animalrows, 2)
+>>>>>>> 288f7cdd488c09b07903ecf6880e0c14ad1c0f43
         print(quiz)
         # Slaat huidige game data op
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
@@ -121,8 +125,6 @@ def search():
 
 
 
-
-
 @app.route("/question", methods=["GET", "POST"])
 def question():
 
@@ -161,7 +163,7 @@ def question():
         # Als game klaar is wordt er doorverwezen naar winner/loser pagina
         if len(session["game_data"]["rounds"]) == 1:
 
-           return render_template("winner.html")
+           return redirect("winner")
 
 
         # Volgende vraag opzetten
@@ -179,20 +181,29 @@ def question():
             word_len=len(animalname), round_number=round_number, score=score, opponent=session["opponent"]["nickname"])
 
 
-#@app.route("/winner", methods=["GET", "POST"])
+@app.route("/winner", methods=["GET", "POST"])
+def winner():
 #  # telt hoeveel 1en in score
 
-             #opponent = opponentrow[0]["status"]
-             #user = str(session["game_data"]["score"])
-             #one = "1"
+    if request.method == "GET":
+        opponent = session["opponent"]["status"]
+        user = ""
+        for cijfer in session["game_data"]["score"]:
+            user += str(cijfer)
 
-#             if opponent.count(one) > user.count(one):
-#                 return render_template("winner.html", answer="YOU LOST THE GAME")
+        total_opponent = opponent.count("1")
+        total_user = user.count("1")
+        total_score = total_user * 10
 
-#             if opponent.count(one) < user.count(one):
-#                 return render_template("winner.html", answer="YOU WON THE GAME")
+        db.execute("INSERT INTO game (nickname, status, level) VALUES (:nickname, :status, :level)",
+        nickname=session["nickname"], status=user, level=session["game_data"]["domain"])
 
-#             else:
-#                 return render_template("winner.html", answer="IT'S A TIE")
+        db.execute("UPDATE Users SET score = score + :total_score, level WHERE Username = :Username", Username=session["nickname"], total_score=int(total_score))
+
+        return render_template("winner.html", total_opponent=total_opponent, total_user=total_user)
+
+    if request.method == "POST":
+        return redirect("index")
+
 
 
