@@ -24,17 +24,19 @@ gebruikers worden per ronde gekoppelt aan een tegenstander
 
 
 ## Score systeem 
-10 vragen per quiz.
-10 punten per juist beantwoorde vraag.
-Winnaar krijgt 30 bonus punten.
-Gelijkspel geen bonuspunten.
-
-Level 1: kan altijd gespeeld worden.
-Level 2: unlocked vanaf 100 punten.
-Level 3: unlocked vanaf 200 punten.
-Level 4: unlocked vanaf 300 punten.
-Level 5: unlocked vanaf 400 punten.
-Mix: unlocked vanaf 500 punten.
+###Hoofdlijnen
+  *10 vragen per quiz
+  *10 punten per juist beantwoorde vraag
+  *Winnaar krijgt 30 bonus punten.
+  *Gelijkspel geen bonuspunten.
+  
+###levels
+  *Level 1: kan altijd gespeeld worden.
+  *Level 2: unlocked vanaf 100 punten.
+  *Level 3: unlocked vanaf 200 punten.
+  *Level 4: unlocked vanaf 300 punten.
+  *Level 5: unlocked vanaf 400 punten.
+  *Mix: unlocked vanaf 500 punten.
 
 
 ## API
