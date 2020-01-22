@@ -49,7 +49,7 @@ def index():
         quiz = random.sample(animalrows, 3)
         print(quiz)
         # Slaat huidige game data op
-        session["game_data"] = {"round_number": 1, "rounds": quiz}
+        session["game_data"] = {"round_number": 1, "rounds": quiz, "score": 0}
 
         return redirect("search")
 
