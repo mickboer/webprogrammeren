@@ -17,7 +17,7 @@
     <p style="font-size:120%">CURRENT SCORE {{ score }}</p>
 
     <div>
-        <img src='{{ photo }}'>
+        <img class= imgborder src='{{ photo }}'>
     </div>
 
     <div>
@@ -32,11 +32,22 @@
         {% for number in range(0, word_len) %}
             <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"required>
         {% endfor %}
-        <button type="submit" id="submit">Submit</button>
+        <button class= submitbutton type="submit" id="submit">Submit</button>
     </form>
 
 
+<<<<<<< HEAD
 <script src="/static/script.js"></script>
+=======
+    <script>
+        function autotab(current,to){
+            if (current.getAttribute && current.value.length==current.getAttribute("maxlength")) {
+                to.focus()
+                }
+        }
+
+    </script>
+>>>>>>> 581c691885fdd86dfc1b1b0e2b475f38c7d2f7ed
 </body>
 
 

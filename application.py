@@ -35,8 +35,6 @@ Session(app)
 db = SQL("sqlite:///webprogrammeren.db")
 # TO DO: database juist koppelen
 # Configure CS50 Library to use SQLite database
-# db = SQL("sqlite:///finance.db")
-
 
 @app.route("/index", methods=["GET", "POST"])
 def index():
@@ -48,7 +46,11 @@ def index():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
+<<<<<<< HEAD
+        quiz = random.sample(animalrows, 10)
+=======
         quiz = random.sample(animalrows, 2)
+>>>>>>> 288f7cdd488c09b07903ecf6880e0c14ad1c0f43
         print(quiz)
         # Slaat huidige game data op
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
@@ -136,7 +138,10 @@ def question():
 
         #selecteer een opponent op basis van game id
         session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
+<<<<<<< HEAD
         print(session["opponent"])
+=======
+>>>>>>> 581c691885fdd86dfc1b1b0e2b475f38c7d2f7ed
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"]["nickname"])
