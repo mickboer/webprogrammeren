@@ -111,6 +111,8 @@ main .inputbox {
     box-shadow: 0 3px #999;
 }
 
+.submitbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
+
 
 .showbutton {
     margin:100px;
