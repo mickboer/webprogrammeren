@@ -35,6 +35,8 @@ Session(app)
 db = SQL("sqlite:///webprogrammeren.db")
 # TO DO: database juist koppelen
 # Configure CS50 Library to use SQLite database
+# db = SQL("sqlite:///finance.db")
+
 
 @app.route("/index", methods=["GET", "POST"])
 def index():
@@ -46,11 +48,7 @@ def index():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
-<<<<<<< HEAD
         quiz = random.sample(animalrows, 10)
-=======
-        quiz = random.sample(animalrows, 2)
->>>>>>> 288f7cdd488c09b07903ecf6880e0c14ad1c0f43
         print(quiz)
         # Slaat huidige game data op
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
@@ -59,10 +57,15 @@ def index():
         return redirect("search")
 
     else:
-        dict_level123 = {"pets": 0, "farm": 100, "wildlife": 200}
-        dict_level456 = {"sealife": 300, "insects": 400, "mix it up": 500}
-        current_score = 340
-        return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score)
+        dict_level123 = {"pets": [0, 0], "farm": [100, 1], "wildlife": [200, 2]}
+        dict_level456 = {"sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
+        current_score = db.execute("SELECT score FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["score"]
+        current_level = db.execute("SELECT level FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["level"]
+        # # Test voor level unlock
+        # current_score = 340
+        # current_level = 2
+
+        return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score, current_level=current_level)
 
 
 
@@ -138,10 +141,7 @@ def question():
 
         #selecteer een opponent op basis van game id
         session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
-<<<<<<< HEAD
-        print(session["opponent"])
-=======
->>>>>>> 581c691885fdd86dfc1b1b0e2b475f38c7d2f7ed
+
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"]["nickname"])
@@ -199,10 +199,22 @@ def winner():
         total_user = user.count("1")
         total_score = total_user * 10
 
+        latest = "pets"
+        if total_user > total_opponent:
+            latest = session["game_data"]["domain"]
+
+        latest_level = 1
+        level_dict = {"pets": 1, "farm": 2, "wildlife": 3, "sealife": 4, "insects": 5, "mix it up": 5}
+        for key, value in level_dict.items():
+            if latest == key:
+                latest_level = value
+
+
         db.execute("INSERT INTO game (nickname, status, level) VALUES (:nickname, :status, :level)",
         nickname=session["nickname"], status=user, level=session["game_data"]["domain"])
 
-        db.execute("UPDATE Users SET score = score + :total_score, level WHERE Username = :Username", Username=session["nickname"], total_score=int(total_score))
+        db.execute("UPDATE Users SET score = score + :total_score, level = :level WHERE Username = :Username",
+        Username=session["nickname"], total_score=int(total_score), level=latest_level)
 
         return render_template("winner.html", total_opponent=total_opponent, total_user=total_user)
 

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    winner
+{% endblock %}
+
+{% block main %}
+
+    <body>
+        <div>
+            {% if total_opponent < total_user %}
+                <p>You have won the game, CONGRATULATIONS!</p>
+
+            {% elif total_opponent > total_user %}
+                <p>You have lost the game</p>
+
+            {% else %}
+                <p>It's a tie!</p>
+
+            {% endif %}
+        </div>
+
+        <div>
+            <form action="/winner" method="post">
+                <button class="btn btn-primary" type="submit">Play another game</button>
+            </form>
+        </div>
+    </body>
+
+{% endblock %}
