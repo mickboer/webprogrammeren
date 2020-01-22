@@ -46,10 +46,10 @@ def index():
 
         # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
         animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
-        quiz = random.sample(animalrows, 5)
+        quiz = random.sample(animalrows, 3)
         print(quiz)
         # Slaat huidige game data op
-        session["game_data"] = {"round_number": 1, "rounds": quiz, "score": []}
+        session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
 
 
         return redirect("search")
@@ -134,62 +134,35 @@ def question():
         # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
-        # kies een random game id
-        game_id = id=random.randint(1, 6)
-
-        #onthoud game id
-        session["game_id"] = game_id
-
         #selecteer een opponent op basis van game id
-        opponentrow = db.execute("SELECT nickname FROM game WHERE game_id = :id", id=random.randint(1, 5))
-
-        #onthoud nickname opponent
-        session["opponent"] = opponentrow[0]["nickname"]
+        session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
-            round_number=round_number, opponent=session["opponent"])
+            round_number=round_number, opponent=session["opponent"]["nickname"])
 
     if request.method == "POST":
 
-        # als je bij de laatste vraag bent dan
-        if len(session["game_data"]["rounds"]) == 1:
-
-            # haalt opponent bot uit database
-            opponentrow = db.execute("SELECT nickname FROM game WHERE game_id = :id", id=session["game_id"])
-
-            # telt hoeveel 1en in score
-            opponent = opponentrow[0]["status"]
-            user = str(session["game_data"]["score"])
-            one = "1"
-
-            if opponent.count(one) > user.count(one):
-                return render_template("winner.html", answer="YOU LOST THE GAME")
-
-            if opponent.count(one) < user.count(one):
-                return render_template("winner.html", answer="YOU WON THE GAME")
-
-            else:
-                return render_template("winner.html", answer="IT'S A TIE")
-
-
-        # Session data ophalen
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-        round_number = session["game_data"]["round_number"]
-
         # Haalt session[game_data] op uit helpers.py (twee variabelen)
-        animalname, unsplashanima = game_data(2)
+        animalname, unsplashanimal = game_data(2)
 
         # Antwoord van gebruiker ophalen
         user_input = ""
         for letter in range(len(animalname)):
             user_input += request.form.get("box" + str(letter))
 
+
         # Valideert antwoord en voegt score toe
         if animalname == user_input.lower():
             session["game_data"]["score"].append(1)
         elif animalname != user_input.lower():
             session["game_data"]["score"].append(0)
+
+
+        # Als game klaar is wordt er doorverwezen naar winner/loser pagina
+        if len(session["game_data"]["rounds"]) == 1:
+
+           return render_template("winner.html")
+
 
         # Volgende vraag opzetten
         session["game_data"]["rounds"].remove(session["game_data"]["rounds"][0])
@@ -206,41 +179,19 @@ def question():
             word_len=len(animalname), round_number=round_number, score=score, opponent=session["opponent"])
 
 
+# @ WINNER PAGE.
+#  # telt hoeveel 1en in score
+#             opponent = opponentrow[0]["status"]
+#             user = str(session["game_data"]["score"])
+#             one = "1"
+
+#             if opponent.count(one) > user.count(one):
+#                 return render_template("winner.html", answer="YOU LOST THE GAME")
+
+#             if opponent.count(one) < user.count(one):
+#                 return render_template("winner.html", answer="YOU WON THE GAME")
+
+#             else:
+#                 return render_template("winner.html", answer="IT'S A TIE")
 
 
-
-
-
-
-#def check_score():
-    #username = session["id"]
-    #score = db.execute("SELECT Score FROM users WHERE username=:username", username=username)
-
-    #dict_levels = {"pets": 0, "farm": 100, "wildlife": 200, "sealife": 300, "insects": 400, "all_levels": 500}
-    #score = 340
-    #latest_level = "pets"
-    #for key, value in dict_levels.items():
-        #if score >= value:
-           # latest_level = key
-    #print(latest_level)
-    #return render_template("index.html", level=latest_level)
-
-
-#app.route("/register", methods=["GET", "POST"])
-# def register():
-#     if request.method == "POST":
-#         username = request.form.get("username")
-
-#         if not username:
-#             return ("Nickname has to be at least 1 character long")
-
-#         result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=username)
-
-#         if not result:
-#             return ("Username already in use")
-#         return redirect("/")
-
-#     else:
-#         return render_template("register.html")
-
-# ############   END TESTING API    ###############
