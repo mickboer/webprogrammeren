@@ -49,7 +49,7 @@ def index():
         quiz = random.sample(animalrows, 3)
         print(quiz)
         # Slaat huidige game data op
-        session["game_data"] = {"round_number": 1, "rounds": quiz, "score": 0}
+        session["game_data"] = {"round_number": 1, "rounds": quiz, "score": []}
 
         return redirect("search")
 
@@ -152,12 +152,12 @@ def question():
         for letter in range(len(animalname)):
             user_input += request.form.get("box" + str(letter))
 
-        # Valideert antwoord TOEVOEGEN STUK JUSTINE
-        # En score toevoegen, TOEVOEGEN STUK JUSTINE
+        # Valideert antwoord en voegt score toe
+
         if animalname == user_input.lower():
-            answer = True
-        else:
-            answer = False
+            session["game_data"]["score"].append(1)
+        elif animalname != user_input.lower():
+            session["game_data"]["score"].append(0)
 
         # Volgende vraag opzetten
         session["game_data"]["rounds"].remove(session["game_data"]["rounds"][0])
@@ -167,11 +167,13 @@ def question():
         animalname = session["game_data"]["rounds"][0]["animal"]
         unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
         round_number = session["game_data"]["round_number"]
+        score = sum(session["game_data"]["score"])*10
 
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
 
-        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname), round_number=round_number)
+        return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
+            word_len=len(animalname), round_number=round_number, score=score)
 
 
 
