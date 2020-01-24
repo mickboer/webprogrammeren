@@ -132,6 +132,8 @@ def question():
         # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
+        #selecteer een opponent op basis van game id
+        session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"]["nickname"])
