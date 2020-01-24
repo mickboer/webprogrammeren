@@ -146,3 +146,29 @@ main .inputbox {
   border: 5px double YellowGreen;
 
 }
+
+/* style sheet for start page*/
+
+.startbutton
+{
+    margin:80px;
+    font-size: 12px;
+    font-variant: small-caps;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+.startbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
+
+.startbackground {
+          background-image: url('/static/dieren2.jpg');
+          background-repeat: no-repeat;
+          background-attachment: fixed;
+          background-size: cover;
+        }

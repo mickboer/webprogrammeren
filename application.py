@@ -101,6 +101,9 @@ def nickname():
         if not result:
             return ("Nickname already in use")
 
+        else:
+            db.execute("INSERT into User (Usersname) VALUES(:Username)", name=nickname)
+
         return redirect("index")
 
     else:
