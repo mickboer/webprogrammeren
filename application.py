@@ -95,14 +95,14 @@ def nickname():
         if not nickname:
             return ("Nickname has to be at least 1 character long")
 
-        result = db.execute("SELECT Usersname from Users WHERE Username = :Username", name=nickname)
+        result = db.execute("SELECT Username from Users WHERE Username = :Username", Username=nickname)
         session["nickname"] = nickname
 
-        if not result:
+        if len(result) > 0:
             return ("Nickname already in use")
 
         else:
-            db.execute("INSERT into User (Usersname) VALUES(:Username)", name=nickname)
+            db.execute("INSERT into Users (Username) VALUES(:Username)", Username=nickname)
 
         return redirect("index")
 
