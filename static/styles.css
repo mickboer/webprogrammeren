@@ -60,20 +60,54 @@ main img
     box-shadow: 0 3px #999;
     }
 
+.button:active {transform: translateY(4px);}
 .lockbuttons:active {transform: translateY(4px);}
-
 .buttons:hover {background-color: rgba(154, 205, 50, 0.87)}
 .button:hover {background-color: rgba(154, 205, 50, 0.87)}
+.submitbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
 
-.button:active {
-  background-color: rgba(154, 205, 50, 0.50);
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
 
 body {background-color: lightblue;}
 
 /*.textunlock*/
+
+
+
+.submitbutton
+{
+    margin:5px;
+    font-size: 12px;
+    font-variant: small-caps;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+
+
+.showbutton {
+    margin:100px;
+    font-size: 25px;
+    font-variant: small-caps;
+    text-align: center;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+    position: absolute;
+    top: 8px;
+    right: 16px;
+}
+
+
+
 
 /*Style voor de input formulieren in het spel*/
 main .inputbox {
@@ -95,63 +129,3 @@ main .inputbox {
   border: 5px double YellowGreen;
 
 }
-
-.submitbutton
-{
-    margin:5px;
-    font-size: 12px;
-    font-variant: small-caps;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: black;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-}
-
-.submitbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
-
-
-.showbutton {
-    margin:100px;
-    font-size: 25px;
-    font-variant: small-caps;
-    text-align: center;
-    outline: none;
-    color: black;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-    position: absolute;
-    top: 8px;
-    right: 16px;
-}
-
-
-
-.startbutton
-{
-    margin:80px;
-    font-size: 12px;
-    font-variant: small-caps;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: black;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-}
-
-.startbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
-
- .kingdom {
-          background-image: url('/static/dieren2.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
-        }

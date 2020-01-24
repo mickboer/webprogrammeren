@@ -53,7 +53,6 @@ def index():
         # Slaat huidige game data op
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
 
-
         return redirect("search")
 
     else:
@@ -82,9 +81,7 @@ def start():
     if request.method == "POST":
 
         return redirect("nickname")
-
     else:
-
         return render_template("start.html")
 
 
@@ -98,7 +95,7 @@ def nickname():
         if not nickname:
             return ("Nickname has to be at least 1 character long")
 
-        result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=nickname)
+        result = db.execute("SELECT Usersname from Users WHERE Username = :Username", name=nickname)
         session["nickname"] = nickname
 
         if not result:
@@ -118,14 +115,7 @@ def nickname():
 def search():
     """search opponent"""
 
-    # if request.method == "POST":
-
-    return redirect("question")
-
-    # else:
-
-    #     return render_template("search.html")
-
+    return render_template("search.html")
 
 
 @app.route("/question", methods=["GET", "POST"])
@@ -138,9 +128,6 @@ def question():
 
         # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
-
-        #selecteer een opponent op basis van game id
-        session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
 
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
