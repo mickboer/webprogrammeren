@@ -1,3 +1,20 @@
+/*BACKGROUND SETTINGS*/
+body, html {
+  height: 100%;
+}
+
+#bg {
+   /*The image used*/
+  background-image: url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
+
+  /*Full height*/
+  height: 100%;
+
+   /*Center and scale the image nicely*/
+  background-position: left center, right center, bottom center;
+  background-repeat: no-repeat, no-repeat, no-repeat;
+}
+
 
 
 main .form-control
