@@ -4,11 +4,11 @@
     <!-- https://favicon.io/emoji-favicons/lion-face/ -->
     <link rel="icon" href="/static/favicon.png">
 
-
     <div id="bg">
     <head>
 
-
+        <!-- scaling mobile device -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- website logo -->
         <center><img src="/static/logo.png" width="500" height="70" ><img></center>
 
@@ -26,6 +26,18 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
 
         <title>Animal Kingdom Quiz: {% block title %}{% endblock %}</title>
+
+        <style>
+        * {
+          box-sizing: border-box;
+        }
+        @media only screen and (max-width: 768px) {
+          /* For mobile phones: */
+          [class*="col-"] {
+            width: 100%;
+          }
+        }
+        </style>
 
     </head>
 
