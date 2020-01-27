@@ -1,6 +1,8 @@
 
 {% extends "layout.html" %}
-
+{% block stylesheets %}
+<link href="/static/style_question.css" rel="stylesheet">
+{% endblock %}
 {% block title %}
     Questions
 {% endblock %}
@@ -11,12 +13,25 @@
 
 <body>
 
+    <table align="center">
+        <col width="45%">
+        <col width="10%">
+        <col width="45%">
+        <tr>
+            <th>{{ player }}</th>
+            <th>VS.</th>
+            <th>{{ opponent }}</th>
+        </tr>
 
-    <p style="font-size:90%"> You're playing against <b>{{ opponent }}</b></p>
+        <tr>
+            <td>{{ score }} out of {{ (round_number - 1)*10 }} points</td>
+            <td id="emptyrow"></td>
+            <td>{{ opponent_score*10 }} out of {{ (round_number - 1)*10 }} points</td>
+        </tr>
+    </table>
+    <br>
 
-    <p style="font-size:120%"> QUESTION {{ round_number }}</p>
 
-    <p style="font-size:120%">CURRENT SCORE {{ score }}</p>
 
     <div>
         <img class= imgborder src='{{ photo }}'>
@@ -33,7 +48,7 @@
         <tr><center>
             <form name="user_input" action="/question" method="post">
                 {% for number in range(0, word_len) %}
-                <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off"
+                <input class="inputbox" autofocus type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off"
                 onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"
                 onKeydown="backspace(this, document.user_input.box{{ number-1 }})" required>
                 {% endfor %}

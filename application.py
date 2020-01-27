@@ -82,7 +82,12 @@ def start():
 
         return redirect("nickname")
     else:
-        return render_template("start.html")
+        try:
+            if session["nickname"] != None:
+                return redirect("index")
+
+        except:
+            return render_template("start.html")
 
 
 # from nickname to index
@@ -143,7 +148,8 @@ def question():
         session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
-            round_number=round_number, opponent=session["opponent"]["nickname"])
+            round_number=round_number, opponent=session["opponent"]["nickname"],
+            opponent_score = session["opponent"]["status"].count("1"), player=session["nickname"], score=0)
 
     if request.method == "POST":
 
@@ -183,7 +189,8 @@ def question():
 
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
-            word_len=len(animalname), round_number=round_number, score=score, opponent=session["opponent"]["nickname"])
+            word_len=len(animalname), round_number=round_number, score=score, player=session["nickname"], opponent=session["opponent"]["nickname"],
+            opponent_score = session["opponent"]["status"].count("1"))
 
 
 @app.route("/winner", methods=["GET", "POST"])

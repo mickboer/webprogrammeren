@@ -1,0 +1,46 @@
+table, td, th {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+
+}
+
+th {
+  font-size: 25px;
+  color: black;
+  background-color: rgb(145, 194, 49, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 3px #999;
+  margin: 5px;
+}
+
+td {
+  font-size: 18px;
+  background-color: rgb(145, 194, 49, 0.3);
+  border-radius: 12px;
+  padding: 10px ;
+  margin: 10px;
+
+}
+
+#emptyrow {
+  background-color: rgb(0, 0, 0, 0);
+}
+
+
+    /*margin:5px;*/
+    padding: 20px 100px;
+    /*font-size: 25px;*/
+    /*font-variant: small-caps;*/
+    /*text-align: center;*/
+    /*cursor: pointer;*/
+    /*outline: none;*/
+    /*width: 400px;*/
+    /*color: black;*/
+    /*background-color: rgb(154, 205, 50, 0.6);*/
+    /*border: none;*/
+    /*border-radius: 12px;*/
+    /*box-shadow: 0 3px #999;*/
