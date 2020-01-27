@@ -180,3 +180,12 @@ main .inputbox {
           background-size: cover;
         }
 
+
+/* media queries */
+@media only screen and (max-width: 768px){
+    [class*="col-"]{
+        width:100%;
+    }
+
+}
+
