@@ -12,25 +12,23 @@
         <link href="/static/styles.css" rel="stylesheet">
 
         <title>Animal Kingdom Quiz: Start {% block title %}{% endblock %}</title>
-        {% block main %}
-
     </head>
 
+    {% block main %}
 
-    <form action="/start" method="post">
-
-        <body class= startbackground>
-
-        <center><img src="/static/logo.png" width="1000" height="100" ><img></center>
-
-        <center><button class="startbutton" type="submit"><img src="/static/newstart.png" width="300" height="100" ><img></button></center>
-
-        </body>
+    <body id="bg_start">
 
 
-    </form
+        <form id="gif_button" action="/start" method="post">
 
-{% endblock %}
+            <center><button class="startbutton" type="submit"><img src="/static/newstart.png" width="300" height="100" ><img></button></center>
+
+        </from>
+
+    </body>
+
+
+    {% endblock %}
 
 
 
