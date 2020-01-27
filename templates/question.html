@@ -29,15 +29,24 @@
     </div>
 
 
-    <form name="user_input" action="/question" method="post">
+    <table>
+        <tr><center>
+            <form name="user_input" action="/question" method="post">
+                {% for number in range(0, word_len) %}
+                <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"required>
+                {% endfor %}
+        </center></tr>
 
-        {% for number in range(0, word_len) %}
-            <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"required>
-        {% endfor %}
-        <button class= submitbutton type="submit" id="submit">Submit</button>
-    </form>
+        <tr>
+                <button class= submitbutton type="submit" name="submit">Submit</button>
+            </form>
 
+            <form name="next_question" action="/question" method="post">
+                <button class= nextbutton type="submit" name="next">Pass</button>
+            </form>
 
+        </tr>
+    </table>
 
 <script src="/static/script.js"></script>
 
@@ -46,6 +55,6 @@
 
 
 
-
 {% endblock %}
+
 
