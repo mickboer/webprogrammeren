@@ -8,11 +8,16 @@
 {% block main %}
 
 <head>
-    <button class= "showbutton" type="button" >score: {{ current_score }}</button>
-    <button class="leaderbord" type="button">leaderbord</button>
 
     <link href="/static/licon.ico" rel="icon">
 </head>
+
+<table>
+<tr>
+<button class= "showbutton" type="button" >score: {{ current_score }}</button>
+<button class="showbutton" type="button">leaderbord</button>
+</tr>
+</table>
 
 <div id="bg"></div>
 <div class="header">
@@ -25,8 +30,8 @@
     <table class="table">
         <form action="/index" method="post">
             <table style="width:100%">
+            <tr>
 
-                <td>
                     {% for level, score in dict_level123.items(): %}
 
                         {% if current_score < score[0] or current_level < score[1]  %}
@@ -38,8 +43,8 @@
                         {% endif %}
 
                     {% endfor %}
-                </td>
-                <td>
+                </tr>
+                <tr>
 
                  {% for level, score in dict_level456.items() %}
 
@@ -51,7 +56,7 @@
                             <button class="buttons" name="level" value="{{ level }}" type="submit" data-level="{{ level }}">{{ level }}</button>
                         {% endif %}
                     {% endfor %}
-                </td>
+                </tr>
             </table>
         </table>
     </form>

@@ -120,7 +120,7 @@ body {background-color: lightblue;}
 
 
 .showbutton {
-    margin:100px;
+    margin:10px;
     font-size: 25px;
     font-variant: small-caps;
     text-align: center;
@@ -130,26 +130,6 @@ body {background-color: lightblue;}
     border: none;
     border-radius: 12px;
     box-shadow: 0 3px #999;
-    position: absolute;
-    top: 8px;
-    right: 16px;
-}
-
-
-.leaderbord {
-    margin:100px;
-    font-size: 25px;
-    font-variant: small-caps;
-    text-align: center;
-    outline: none;
-    color: black;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-    position: absolute;
-    top: 8px;
-    left: 16px;
 }
 
 
