@@ -17,7 +17,6 @@ body, html {
     background-repeat: no-repeat;
 }
 
-
 #bg_start {
     /*The image used*/
     background-image: url("monkey.gif"), url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
