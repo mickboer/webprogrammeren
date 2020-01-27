@@ -33,7 +33,9 @@
         <tr><center>
             <form name="user_input" action="/question" method="post">
                 {% for number in range(0, word_len) %}
-                <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off" onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"required>
+                <input class="inputbox" type="text" id="box{{ number }}" name="box{{ number }}" autocomplete="off"
+                onKeyup="autotab(this, document.user_input.box{{ number+1 }})" maxlength="1"
+                onKeydown="backspace(this, document.user_input.box{{ number-1 }})" required>
                 {% endfor %}
         </center></tr>
 
