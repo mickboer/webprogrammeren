@@ -81,30 +81,42 @@ main img
 .lockbuttons:active {transform: translateY(4px);}
 .buttons:hover {background-color: rgba(154, 205, 50, 0.87)}
 .button:hover {background-color: rgba(154, 205, 50, 0.87)}
-.submitbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
+.submitbutton:hover {background-color: rgba(154, 205, 50)}
+.nextbutton:hover {background-color: rgba(252, 61, 3)}
 
 
 body {background-color: lightblue;}
 
 /*.textunlock*/
-
-
-
 .submitbutton
 {
     margin:5px;
-    font-size: 12px;
+    font-size: 18px;
     font-variant: small-caps;
     text-align: center;
     cursor: pointer;
     outline: none;
     color: black;
-    background-color: rgb(154, 205, 50, 0.6);
+    background-color: rgb(169, 205, 50, 0.6);
     border: none;
     border-radius: 12px;
     box-shadow: 0 3px #999;
 }
 
+.nextbutton
+{
+    margin:5px;
+    font-size: 18px;
+    font-variant: small-caps;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: black;
+    background-color: rgb(252, 61, 3, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
 
 
 .showbutton {
@@ -122,6 +134,7 @@ body {background-color: lightblue;}
     top: 8px;
     right: 16px;
 }
+
 
 .leaderbord {
     margin:100px;
@@ -142,11 +155,11 @@ body {background-color: lightblue;}
 
 /*Style voor de input formulieren in het spel*/
 main .inputbox {
-  width: 100px;
-  height: 100px;
+  width: 70px;
+  height: 70px;
   text-align: center;
-  font-size: 50px;
-  margin: 20px ;
+  font-size: 40px;
+  margin: 16px ;
   box-sizing: border-box;
   border: 7px solid yellowgreen;
   border-radius: 10px;
@@ -187,6 +200,7 @@ main .inputbox {
           background-size: cover;
         }
 
+
 /* media queries */
 @media only screen and (max-width: 768px){
     [class*="col-"]{
@@ -194,3 +208,4 @@ main .inputbox {
     }
 
 }
+

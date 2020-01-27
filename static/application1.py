@@ -53,6 +53,7 @@ def index():
         # Slaat huidige game data op
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
 
+
         return redirect("search")
 
     else:
@@ -81,7 +82,9 @@ def start():
     if request.method == "POST":
 
         return redirect("nickname")
+
     else:
+
         return render_template("start.html")
 
 
@@ -95,14 +98,11 @@ def nickname():
         if not nickname:
             return ("Nickname has to be at least 1 character long")
 
-        result = db.execute("SELECT Username from Users WHERE Username = :Username", Username=nickname)
+        result = db.execute("INSERT INTO Users (username) VALUES (:name)", name=nickname)
         session["nickname"] = nickname
 
-        if len(result) > 0:
+        if not result:
             return ("Nickname already in use")
-
-        else:
-            db.execute("INSERT into Users (Username) VALUES(:Username)", Username=nickname)
 
         return redirect("index")
 
@@ -118,7 +118,14 @@ def nickname():
 def search():
     """search opponent"""
 
-    return render_template("search.html")
+    # if request.method == "POST":
+
+    return redirect("question")
+
+    # else:
+
+    #     return render_template("search.html")
+
 
 
 @app.route("/question", methods=["GET", "POST"])
@@ -135,6 +142,7 @@ def question():
         #selecteer een opponent op basis van game id
         session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
 
+
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"]["nickname"])
 
@@ -146,11 +154,8 @@ def question():
         # Antwoord van gebruiker ophalen
         user_input = ""
         for letter in range(len(animalname)):
-            # breaks als de gebruiker niks heeft ingevuld
-            if request.form.get("box" + str(letter)) == None:
-                break
-            else:
-                user_input += request.form.get("box" + str(letter))
+            user_input += request.form.get("box" + str(letter))
+
 
         # Valideert antwoord en voegt score toe
         if animalname == user_input.lower():
@@ -161,6 +166,7 @@ def question():
 
         # Als game klaar is wordt er doorverwezen naar winner/loser pagina
         if len(session["game_data"]["rounds"]) == 1:
+
            return redirect("winner")
 
 
