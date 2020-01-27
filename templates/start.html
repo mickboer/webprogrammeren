@@ -12,11 +12,11 @@
         <link href="/static/styles.css" rel="stylesheet">
 
         <title>Animal Kingdom Quiz: Start {% block title %}{% endblock %}</title>
-        {% block main %}
-
     </head>
 
-    <body id="bg_2">
+    {% block main %}
+
+    <body id="bg_start">
 
 
         <form id="gif_button" action="/start" method="post">
@@ -28,7 +28,7 @@
     </body>
 
 
-
+    {% endblock %}
 
 
 
