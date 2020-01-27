@@ -56,16 +56,25 @@ def index():
         return redirect("search")
 
     else:
+        # First 3 levels with required score and level
         dict_level123 = {"pets": [0, 0], "farm": [100, 1], "wildlife": [200, 2]}
+
+        # Last 3 levels with required score and level
         dict_level456 = {"sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
+
         current_score = db.execute("SELECT score FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["score"]
         current_level = db.execute("SELECT level FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["level"]
-        # # Test voor level unlock
-        # current_score = 340
-        # current_level = 2
 
-        return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score, current_level=current_level)
+        # Select game data of all players
+        one_person = db.execute("SELECT Username, score, level FROM Users")
 
+        # Create top 10 sorted on level, than score
+        level_and_score = sorted(one_person, key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
+
+        leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
+
+        return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score,
+        current_level=current_level, leaderboard_list=leaderboard_list)
 
 
 @app.route("/", methods=["GET", "POST"])
