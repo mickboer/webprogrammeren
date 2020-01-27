@@ -118,7 +118,14 @@ def nickname():
 def search():
     """search opponent"""
 
-    return render_template("search.html")
+    if request.method == "GET":
+
+        return render_template("search.html")
+
+    elif request.method == "POST":
+
+        return redirect("question")
+
 
 
 @app.route("/question", methods=["GET", "POST"])

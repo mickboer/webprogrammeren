@@ -1,20 +1,13 @@
 <!DOCTYPE html>
 
 <html lang="en">
-<<<<<<< HEAD
-       <!-- https://favicon.io/emoji-favicons/lion-face/ -->
-        <link rel="icon" href="/static/favicon.png">
 
-=======
     <!-- https://favicon.io/emoji-favicons/lion-face/ -->
     <link rel="icon" href="/static/favicon.png">
->>>>>>> eed9e7a1a700540e07e5a85c1dfaac06a04539db
-    <div id="bg">
+
+
     <head>
 
-
-        <!-- website logo -->
-        <center><img src="/static/logo.png" width="500" height="70" ><img></center>
 
         <!-- Required meta tags -->
         <meta charset="utf-8">
@@ -34,22 +27,24 @@
     </head>
 
     <body>
+        <div id="bg">
+            <!-- website logo -->
+            <img id="logo" src="/static/logo.png"><img>
+
+            {% if get_flashed_messages() %}
+                <header>
+                    <div class="alert alert-primary border text-center" role="alert">
+                        {{ get_flashed_messages() | join(" ") }}
+                    </div>
+                </header>
+            {% endif %}
+
+            <main class="container p-5">
+                {% block main %}{% endblock %}
+            </main>
 
 
-        {% if get_flashed_messages() %}
-            <header>
-                <div class="alert alert-primary border text-center" role="alert">
-                    {{ get_flashed_messages() | join(" ") }}
-                </div>
-            </header>
-        {% endif %}
-
-        <main class="container p-5">
-            {% block main %}{% endblock %}
-        </main>
-
-
-
+        </div>
     </body>
-    </div>
+
 </html>

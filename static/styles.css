@@ -4,17 +4,61 @@ body, html {
 }
 
 #bg {
-   /*The image used*/
-  background-image: url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
+    /*The image used*/
+    background-image: url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
 
-  /*Full height*/
-  height: 100%;
+    /*Full height*/
+    height: 100%;
+    background-size: contain, contain, contain;
 
-   /*Center and scale the image nicely*/
-  background-position: left center, right center, bottom center;
-  background-repeat: no-repeat, no-repeat, no-repeat;
+
+    /*Center and scale the image nicely*/
+    background-position: left center, right center, bottom center;
+    background-repeat: no-repeat;
 }
 
+#bg_2 {
+    /*The image used*/
+    background-image: url("monkey.gif"), url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
+
+    /*Full height*/
+    height: 100%;
+    background-size: contain, contain, contain, contain;
+
+
+    /*Center and scale the image nicely*/
+    background-position: top center, left center, right center, bottom center;
+    background-repeat: no-repeat;
+}
+
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+}
+
+@media only screen and (max-width: 700px) {
+  #logo {
+    width: 95%;
+  }
+
+  #bg {
+    /*The image used*/
+    background-image: url("BG_left.png");
+
+    /*Full height*/
+    height: 100%;
+    background-size: contain:
+
+
+    /*Center and scale the image nicely*/
+    background-position: left center;
+    background-repeat: no-repeat;
+  }
+
+}
 
 
 main .form-control
@@ -151,7 +195,7 @@ main .inputbox {
 
 .startbutton
 {
-    margin:80px;
+    margin: 25%;
     font-size: 12px;
     font-variant: small-caps;
     text-align: center;
