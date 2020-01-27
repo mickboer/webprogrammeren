@@ -12,20 +12,27 @@
     <link href="/static/licon.ico" rel="icon">
 </head>
 
+<body>
 <table>
 <tr>
 <button class= "showbutton" type="button" >score: {{ current_score }}</button>
-<button class="showbutton" type="button">leaderbord</button>
+<select class="showbutton" name="symbol">
+    <option disabled class="showbutton" hidden selected value>Leaderboard</option>
+
+    {% for player in leaderboard_list %}
+        <option class="showbutton" disabled>Player: {{ player[0] }} Hihgest reached level: {{ player[1] }} Score: {{ player[2] }}</option>
+    {% endfor %}
+
+</select>
 </tr>
 </table>
 
-<div id="bg"></div>
+
 <div class="header">
   <h1>Categories</h1>
   <p>Unlock all categories!</p>
 </div>
 
-<body>
 
     <table class="table">
         <form action="/index" method="post">
