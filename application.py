@@ -158,7 +158,7 @@ def question():
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"]["nickname"],
-            opponent_score = session["opponent"]["status"].count("1"), player=session["nickname"], score=0)
+            opponent_score = 0, player=session["nickname"], score=0)
 
     if request.method == "POST":
 
@@ -180,6 +180,7 @@ def question():
         elif animalname != user_input.lower():
             session["game_data"]["score"].append(0)
 
+        print(session["game_data"]["score"])
 
         # Als game klaar is wordt er doorverwezen naar winner/loser pagina
         if len(session["game_data"]["rounds"]) == 1:
@@ -196,10 +197,12 @@ def question():
         # Haalt de API foto informatie op uit helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
-
+        # Calculate the opponents current score
+        opponent_score = session["opponent"]["status"][0:(round_number - 1)].count("1")
+        print(opponent_score)
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
             word_len=len(animalname), round_number=round_number, score=score, player=session["nickname"], opponent=session["opponent"]["nickname"],
-            opponent_score = session["opponent"]["status"].count("1"))
+            opponent_score = opponent_score)
 
 
 @app.route("/winner", methods=["GET", "POST"])
@@ -207,12 +210,12 @@ def winner():
 #  # telt hoeveel 1en in score
 
     if request.method == "GET":
-        opponent = session["opponent"]["status"]
+        # opponent = session["opponent"]["status"]
         user = ""
         for cijfer in session["game_data"]["score"]:
             user += str(cijfer)
 
-        total_opponent = opponent.count("1")
+        total_opponent = session["opponent"]["status"].count("1")
         total_user = user.count("1")
         total_score = total_user * 10
 
