@@ -60,6 +60,7 @@ def index():
         # Get current score and level from database via dataquery.py
         current_score, current_level = total_scores()
 
+
         # !?!?NAAR DATAQUERY.PY VERPLAATSEN!?!?!?!?!?!?!?!?
         # Select game data of all players
         one_person = db.execute("SELECT Username, score, level FROM Users")
