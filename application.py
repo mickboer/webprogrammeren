@@ -228,7 +228,7 @@ def winner():
         # Update database with new scores
         finished_game(user, total_score, latest_level)
 
-        return render_template("winner.html", total_opponent=total_opponent, total_user=total_user)
+        return render_template("winner.html", total_opponent=total_opponent, total_user=total_user, level=session["game_data"]["domain"])
 
     if request.method == "POST":
         return redirect("index")

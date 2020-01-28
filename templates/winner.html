@@ -9,13 +9,13 @@
     <body>
         <div>
             {% if total_opponent < total_user %}
-                <p>You have won the game, CONGRATULATIONS!</p>
+                <img src="/static/winnerpage/{{ level }}_won.gif">
 
             {% elif total_opponent > total_user %}
-                <p>You have lost the game</p>
+                <img src="/static/winnerpage/{{ level }}_lost.gif">
 
             {% else %}
-                <p>It's a tie!</p>
+                <img src="/static/winnerpage/{{ level }}_tie.gif">
 
             {% endif %}
         </div>
