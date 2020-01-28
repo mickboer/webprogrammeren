@@ -4,11 +4,17 @@
     Index
 {% endblock %}
 
+{% block header %}
+{% if session.nickname %}
+<form action="/logout" method="post">
+    <button type="submit" class="btn btn-link">LOG OUT</button>
+</form>
+{% endif %}
+{% endblock %}
 
 {% block main %}
 
 <head>
-
     <link href="/static/licon.ico" rel="icon">
 </head>
 
