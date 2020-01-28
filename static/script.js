@@ -13,11 +13,14 @@ function backspace(current,to) {
 }
 
 
-//
 function validateForm() {
   var x = document.forms["input_nickname"]["nickname"].value;
   if (x == "") {
-    alert("Name must be filled out");
+    alert("Please fill in Nickname");
+    return false;
+  } else if (x.length > 15) {
+    alert("Nickname to long (max 15 characters)");
     return false;
   }
 }
+

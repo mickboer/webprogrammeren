@@ -34,7 +34,7 @@ def in_use(nickname):
     if not db.execute("SELECT Username from Users WHERE Username = :Username", Username=nickname):
         return True
     else:
-        return
+        return False
 
 def select_opponent():
     """Random select an opponent from the database within given level and create session"""

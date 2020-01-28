@@ -103,13 +103,16 @@ def nickname():
 
         nickname = request.form.get("nickname")
 
+        # Check if nickname is filled in
         if not nickname:
             return ("Nickname has to be at least 1 character long")
 
-
+        # Check if nickname is in us
         if in_use(nickname) == False:
+
             return ("Nickname already in use")
 
+        # Create a session for the user and save to database
         else:
             session["nickname"] = nickname
             create(nickname)
@@ -118,8 +121,6 @@ def nickname():
 
     else:
         return render_template("nickname.html")
-    #for any user_id
-    session.clear()
 
 
 

@@ -1,0 +1,33 @@
+body {
+    /*The image used*/
+    background-image: url("monkey.gif"), url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
+
+    /*Full height*/
+    height: 100%;
+    background-size: contain, contain, contain, contain;
+    background-attachment: fixed;
+
+
+    /*Center and scale the image nicely*/
+    background-position: top center, left center, right center, bottom center;
+    background-repeat: no-repeat;
+}
+
+
+/*Website style format for small screens*/
+@media only screen and (max-width: 700px) {
+    body {
+        /*The image used*/
+        background-image: url("monkey.gif"), url("BG_left.png");
+
+        /*Full height*/
+        height: 100%;
+        background-size: contain, contain;
+        background-attachment: fixed;
+
+
+        /*Center and scale the image nicely*/
+        background-position: top center, left center;
+        background-repeat: no-repeat;
+    }
+}
