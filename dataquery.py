@@ -14,11 +14,18 @@ db = SQL("sqlite:///webprogrammeren.db")
 def quiz_maker(level):
     """Creates a ten question quiz on input level from animal quize database"""
 
-    # Imports all animals from the database in selected 'level'
-    animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
+    # current_level = db.execute("SELECT level FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["level"]
+    if level == "mix it up":
+        animalrows = db.execute("SELECT animal, unsplash FROM animals")
+        return random.sample(animalrows, 10)
 
-    # Returns a random selection of 10 animals
-    return random.sample(animalrows, 10)
+
+    else:
+        # Imports all animals from the database in selected 'level'
+        animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
+
+        # Returns a random selection of 10 animals
+        return random.sample(animalrows, 10)
 
 def total_scores():
     """Get the current score and level of the player from the users database"""

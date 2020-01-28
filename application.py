@@ -60,6 +60,7 @@ def index():
         # Get current score and level from database via dataquery.py
         current_score, current_level = total_scores()
 
+
         # !?!?NAAR DATAQUERY.PY VERPLAATSEN!?!?!?!?!?!?!?!?
         # Select game data of all players
         one_person = db.execute("SELECT Username, score, level FROM Users")
@@ -165,7 +166,8 @@ def question():
         # Get the input from user
         user_input = ""
         for letter in range(len(animalname)):
-            # breaks if field is empty
+
+            # Breaks if field is empty
             if request.form.get("box" + str(letter)) == None:
                 break
             else:
@@ -211,14 +213,20 @@ def winner():
         for number in session["game_data"]["score"]:
             user += str(number)
 
+        # Total correct answers by opponent
         total_opponent = session["opponent"]["status"].count("1")
+
+        # Total correct answers by user
         total_user = user.count("1")
+
         total_score = total_user * 10
 
+        # Update level of user
         latest = "pets"
         if total_user > total_opponent or total_user == 10:
             latest = session["game_data"]["domain"]
 
+        # Update level of user as integer
         latest_level = 1
         level_dict = {"pets": 1, "farm": 2, "wildlife": 3, "sealife": 4, "insects": 5, "mix it up": 5}
         for key, value in level_dict.items():
