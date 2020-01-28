@@ -8,7 +8,7 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 from functools import wraps
 
 def api_request(animal):
-    """Haalt de gevraagde foto data op uit Unsplash API"""
+    """Get's the image data from Unsplash API when animal name is given and returns individual variables"""
 
     # Get image data from unsplash API
     input = 'https://api.unsplash.com/search/photos?query=' + animal + '&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
@@ -28,25 +28,22 @@ def api_request(animal):
 
 
 def game_data(aantal_var):
-    """Vraagt huidige data game data uit in de session op basis van opgegeven aantal variabelen"""
+    """Returns given amount of game data variabele from current game played out of the session data"""
 
-    if aantal_var == 4:
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-        round_number = session["game_data"]["round_number"]
-        score = sum(session["game_data"]["score"])*10
+    # Append the animal name and image name for the next round
+    game_data = [session["game_data"]["rounds"][0]["animal"], session["game_data"]["rounds"][0]["unsplash"]]
 
-        return animalname, unsplashanimal, round_number, score
+    # Append the round number for the next round
+    game_data.append(session["game_data"]["round_number"])
 
+    # Append players score of the current game
+    game_data.append(session["game_data"]["score"])
+    print(session["game_data"]["score"])
+
+    # Return variable needed
+    if aantal_var == 2:
+        return game_data[0], game_data[1]
     elif aantal_var == 3:
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-        round_number = session["game_data"]["round_number"]
-
-        return animalname, unsplashanimal, round_number
-
-    elif aantal_var == 2:
-        animalname = session["game_data"]["rounds"][0]["animal"]
-        unsplashanimal = session["game_data"]["rounds"][0]["unsplash"]
-
-        return animalname, unsplashanimal
+        return game_data[0], game_data[1], game_data[2]
+    elif aantal_var == 4:
+        return game_data[0], game_data[1], game_data[2], game_data[3]

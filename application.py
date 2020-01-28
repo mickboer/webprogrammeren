@@ -17,8 +17,8 @@ import random
 
 #from matplotlib import pyplot
 from PIL import Image
-from helpers import api_request
-from helpers import game_data
+from helpers import api_request, game_data
+from dataquery import quiz_maker, total_scores, in_use, create, select_opponent, finished_game
 
 # Configure application
 app = Flask(__name__)
@@ -32,10 +32,8 @@ app.config["SESSION_PERMANENT"] = False
 app.config["SESSION_TYPE"] = "filesystem"
 Session(app)
 
-db = SQL("sqlite:///webprogrammeren.db")
-# TO DO: database juist koppelen
 # Configure CS50 Library to use SQLite database
-# db = SQL("sqlite:///finance.db")
+db = SQL("sqlite:///webprogrammeren.db")
 
 
 @app.route("/index", methods=["GET", "POST"])
@@ -43,14 +41,11 @@ def index():
 
     if request.method == "POST":
 
+        # Creates random list of 10 animal with choosen level in dataquery.py
         level = request.form.get("level")
-        print(level)
+        quiz = quiz_maker(level)
 
-        # Haalt alle dieren uit categorie op en selecteerd 10 voor spel
-        animalrows = db.execute("SELECT animal, unsplash FROM animals WHERE domain = :domain", domain=level)
-        quiz = random.sample(animalrows, 10)
-        print(quiz)
-        # Slaat huidige game data op
+        # Saves the current game data in a Session
         session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
 
         return redirect("search")
@@ -62,9 +57,10 @@ def index():
         # Last 3 levels with required score and level
         dict_level456 = {"sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
 
-        current_score = db.execute("SELECT score FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["score"]
-        current_level = db.execute("SELECT level FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["level"]
+        # Get current score and level from database via dataquery.py
+        current_score, current_level = total_scores()
 
+        # !?!?NAAR DATAQUERY.PY VERPLAATSEN!?!?!?!?!?!?!?!?
         # Select game data of all players
         one_person = db.execute("SELECT Username, score, level FROM Users")
 
@@ -104,19 +100,19 @@ def start():
 def nickname():
     """nickname"""
     if request.method == "POST":
+
         nickname = request.form.get("nickname")
 
         if not nickname:
             return ("Nickname has to be at least 1 character long")
 
-        result = db.execute("SELECT Username from Users WHERE Username = :Username", Username=nickname)
-        session["nickname"] = nickname
 
-        if len(result) > 0:
+        if in_use(nickname) == False:
             return ("Nickname already in use")
 
         else:
-            db.execute("INSERT into Users (Username) VALUES(:Username)", Username=nickname)
+            session["nickname"] = nickname
+            create(nickname)
 
         return redirect("index")
 
@@ -147,42 +143,41 @@ def question():
 
     if request.method == "GET":
 
-        # Haalt session[game_data] op uit helpers.py (3 variabelen)
+        # Gets session[game_data] from helpers.py
         animalname, unsplashanimal, round_number = game_data(3)
 
-        # Haalt de API foto informatie op uit helpers.py
+        # Get the API foto from from helpers.py
         photo, userlink, name, unsplashlink = api_request(unsplashanimal)
 
-        #selecteer een opponent op basis van game id
-        session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
+        #Selects opponent based on current level
+        select_opponent()
 
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink, word_len=len(animalname),
             round_number=round_number, opponent=session["opponent"]["nickname"],
-            opponent_score = 0, player=session["nickname"], score=0)
+            opponent_score=0, player=session["nickname"], score=0)
 
     if request.method == "POST":
 
-        # Haalt session[game_data] op uit helpers.py (twee variabelen)
+        # Gets session[game_data] from helpers.py
         animalname, unsplashanimal = game_data(2)
 
-        # Antwoord van gebruiker ophalen
+        # Get the input from user
         user_input = ""
         for letter in range(len(animalname)):
-            # breaks als de gebruiker niks heeft ingevuld
+            # breaks if field is empty
             if request.form.get("box" + str(letter)) == None:
                 break
             else:
                 user_input += request.form.get("box" + str(letter))
 
-        # Valideert antwoord en voegt score toe
+        # Validates the users input and add to score
         if animalname == user_input.lower():
             session["game_data"]["score"].append(1)
         elif animalname != user_input.lower():
             session["game_data"]["score"].append(0)
 
-        print(session["game_data"]["score"])
 
-        # Als game klaar is wordt er doorverwezen naar winner/loser pagina
+        # Check is game is finished, then redirects to winner/loser page
         if len(session["game_data"]["rounds"]) == 1:
            return redirect("winner")
 
@@ -199,9 +194,9 @@ def question():
 
         # Calculate the opponents current score
         opponent_score = session["opponent"]["status"][0:(round_number - 1)].count("1")
-        print(opponent_score)
+
         return render_template("question.html", photo=photo, userlink=userlink, name=name, unsplashlink=unsplashlink,
-            word_len=len(animalname), round_number=round_number, score=score, player=session["nickname"], opponent=session["opponent"]["nickname"],
+            word_len=len(animalname), round_number=round_number, score=sum(score)*10, player=session["nickname"], opponent=session["opponent"]["nickname"],
             opponent_score = opponent_score)
 
 
@@ -212,8 +207,8 @@ def winner():
     if request.method == "GET":
         # opponent = session["opponent"]["status"]
         user = ""
-        for cijfer in session["game_data"]["score"]:
-            user += str(cijfer)
+        for number in session["game_data"]["score"]:
+            user += str(number)
 
         total_opponent = session["opponent"]["status"].count("1")
         total_user = user.count("1")
@@ -229,12 +224,8 @@ def winner():
             if latest == key:
                 latest_level = value
 
-
-        db.execute("INSERT INTO game (nickname, status, level) VALUES (:nickname, :status, :level)",
-        nickname=session["nickname"], status=user, level=session["game_data"]["domain"])
-
-        db.execute("UPDATE Users SET score = score + :total_score, level = :level WHERE Username = :Username",
-        Username=session["nickname"], total_score=int(total_score), level=latest_level)
+        # Update database with new scores
+        finished_game(user, total_score, latest_level)
 
         return render_template("winner.html", total_opponent=total_opponent, total_user=total_user)
 

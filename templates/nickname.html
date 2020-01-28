@@ -6,7 +6,7 @@
 
 {% block main %}
 
-<form action="/nickname" method="post">
+<form action="/nickname" method="post" name= "input_nickname" onsubmit="return validateForm()">
     <body>
     <div class="form-group">
         <input autocomplete="off" autofocus class="form-control" name="nickname" placeholder="Nickname" type="text">
