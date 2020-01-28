@@ -216,7 +216,7 @@ def winner():
         total_score = total_user * 10
 
         latest = "pets"
-        if total_user > total_opponent:
+        if total_user > total_opponent or total_user == 10:
             latest = session["game_data"]["domain"]
 
         latest_level = 1
