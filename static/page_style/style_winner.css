@@ -1,0 +1,10 @@
+.submitbutton {
+    margin:5px;
+    font: small-caps bold 15px helvetica;
+    height: 40px;
+    cursor: pointer;
+    background-color: rgb(169, 205, 50, 0.8);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}

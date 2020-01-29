@@ -51,58 +51,15 @@ p {
 }
 
 
-body .form-control
-{
+/*body .form-control*/
+/*{*/
     /* center form controls */
-    display: inline-block;
+/*    display: inline-block;*/
 
     /* override Bootstrap's 100% width for form controls */
-    width: auto;
-}
+/*    width: auto;*/
+/*}*/
 
-
-
-/*BUTTONS*/
-.buttons, .lockbuttons {
-
-    margin: 5px;
-    font: small-caps 25px helvetica;
-    cursor: pointer;
-    width: 400px;
-    height: 75px;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-    }
-
-.lockbuttons {
-    color: MintCream;
-    background-color:rgb(154, 205, 50, 0.3);
-    }
-
-
-/*.button:active {transform: translateY(4px);}*/
-/*.lockbuttons:active {transform: translateY(4px);}*/
-.buttons:hover {background-color: rgba(154, 205, 50, 0.9)}
-.button:hover {background-color: rgba(154, 205, 50, 0.9)}
-.submitbutton:hover {background-color: rgba(154, 205, 50)}
-.nextbutton:hover {background-color: rgba(252, 61, 3)}
-
-
-
-.showbutton {
-    margin:10px;
-    font-size: 25px;
-    font-variant: small-caps;
-    text-align: center;
-    outline: none;
-    color: black;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-}
 
 
 
@@ -134,26 +91,6 @@ body .form-control
 
     h2 {
         font-size: 15px;
-    }
-
-
-    .buttons, .lockbuttons {
-        /*font-size: 20px;*/
-        width: 90%;
-        background-color: rgb(154, 205, 50, 0.8);
-    }
-
-    /*Style voor de input formulieren in het spel*/
-    .inputbox {
-        width: 45px;
-        height: 45px;
-        text-align: center;
-        font-size: 25px;
-        margin: 3px ;
-    }
-
-    .showbutton {
-        max-width: 100%;
     }
 }
 
