@@ -20,17 +20,17 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 ## Screenshots
-![](TD_1.png)
+![](1start.png)
 
-![](TD_2.png)
+![](2nickname.png)
 
-![](TD_3.png)
+![](3index.png)
 
-![](TD_4.png)
+![](4question.png)
 
-![](TD_5.png)
+![](5winner.png)
 
-![](TD_6.png)
+![](6leaderboard.png)
 
 
 
@@ -98,14 +98,44 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 ## Wegwijs door de repository
 
-* application.py
-* helpers.py
-* dataquery.py
-* webprogrammeren.db
-* docs
+**bestanden**
 
-* static
-* templates
+* *application.py*:
+
+* *helpers.py*: bestand met onze helperfuncties (API_request en Gama_data)
+
+* *dataquery.py*: bestand met alle database queries
+
+* *webprogrammeren.db*: onze database met 3 tabellen (users, animals & games)
+
+
+**folders**
+
+* *docs*
+
+ * READ.ME + plaatjes voor in de READ.ME
+ 
+ * TechDesign ( technisch ontwerp) + plaatjes technisch ontwerp
+ 
+
+* *static*
+
+ * Images: map met plaatjes voor op de site
+ 
+ * page_style: css bestanden per pagina
+ 
+ * winnerpage: gifjes voor op de winner pagina
+ 
+ * styles.css: css hoofdbestand, overkoeplende opmaak
+ 
+ * script.js: bestand met onze java functies
+ 
+
+* *templates*
+ 
+ *  Onze html templates
+ 
+
 
 
 ## API
