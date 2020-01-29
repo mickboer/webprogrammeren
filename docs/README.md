@@ -21,7 +21,7 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 
-## Screenshots
+## Screenshots computer
 ![](1start.png)
 
 ![](2nickname.png)
@@ -33,6 +33,21 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 ![](5winner.png)
 
 ![](6leaderboard.png)
+
+## Screenshots telefoon
+
+![](image0.png)
+
+![](image1.png)
+
+![](image2.png)
+
+![](image3.png)
+
+![](iamge4.png)
+
+![](image5.png)
+
 
 
 
