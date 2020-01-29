@@ -9,13 +9,11 @@
 {% endblock %}
 
 {% block header %}
-
     {% if session.nickname %}
         <form action="/logout" method="post">
             <button class="passbutton" type="submit"  >LOG OUT</button>
         </form>
     {% endif %}
-
 {% endblock %}
 
 {% block main %}
