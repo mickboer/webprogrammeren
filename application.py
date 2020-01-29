@@ -112,7 +112,7 @@ def nickname():
         # Check if nickname is in us
         if in_use(nickname) == False:
 
-            return ("Nickname already in use")
+            return redirect("nickname")
 
         # Create a session for the user and save to database
         else:
@@ -123,6 +123,19 @@ def nickname():
 
     else:
         return render_template("nickname.html")
+
+
+@app.route("/check", methods=["GET"])
+def check():
+    nickname = request.args.get("nickname")
+    rows = db.execute("SELECT * FROM Users WHERE Username=:Username", Username=nickname)
+
+    # Check is username exists
+    if len(rows) != 0:
+        return jsonify(False)
+    else:
+        return jsonify(True)
+
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
