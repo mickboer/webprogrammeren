@@ -26,6 +26,7 @@ def quiz_maker(level):
         # Returns a random selection of 10 animals
         return random.sample(animalrows, 10)
 
+
 def total_scores():
     """Get the current score and level of the player from the users database"""
 
@@ -33,6 +34,7 @@ def total_scores():
     current_level = db.execute("SELECT level FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["level"]
 
     return current_score, current_level
+
 
 def in_use(nickname):
     """Searches in the database if the given username exists"""
@@ -58,11 +60,11 @@ def create(nickname):
     db.execute("INSERT into Users (Username) VALUES(:Username)", Username=nickname)
 
 
-def finished_game(user, total_score, latest_level):
+def finished_game(user, total_user, latest_level):
     """Updates the database with the played game information"""
 
     db.execute("INSERT INTO game (nickname, status, level) VALUES (:nickname, :status, :level)",
     nickname=session["nickname"], status=user, level=session["game_data"]["domain"])
 
-    db.execute("UPDATE Users SET score = score + :total_score, level = :level WHERE Username = :Username",
-    Username=session["nickname"], total_score=int(total_score), level=latest_level)
+    db.execute("UPDATE Users SET score = score + :total_user, level = :level WHERE Username = :Username",
+    Username=session["nickname"], total_user=int(total_user), level=latest_level)

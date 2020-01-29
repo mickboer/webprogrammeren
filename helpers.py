@@ -4,8 +4,6 @@ import urllib.request as url
 
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 
-# ? wat is dit.
-from functools import wraps
 
 def api_request(animal):
     """Get's the image data from Unsplash API when animal name is given and returns individual variables"""
