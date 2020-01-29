@@ -51,27 +51,31 @@ def index():
         return redirect("search")
 
     else:
-        # First 3 levels with required score and level
-        dict_level123 = {"pets": [0, 0], "farm": [100, 1], "wildlife": [200, 2]}
+        try:
+            # First 3 levels with required score and level
+            dict_level123 = {"pets": [0, 0], "farm": [100, 1], "wildlife": [200, 2]}
 
-        # Last 3 levels with required score and level
-        dict_level456 = {"sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
+            # Last 3 levels with required score and level
+            dict_level456 = {"sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
 
-        # Get current score and level from database via dataquery.py
-        current_score, current_level = total_scores()
+            # Get current score and level from database via dataquery.py
+            current_score, current_level = total_scores()
 
 
-        # !?!?NAAR DATAQUERY.PY VERPLAATSEN!?!?!?!?!?!?!?!?
-        # Select game data of all players
-        one_person = db.execute("SELECT Username, score, level FROM Users")
+            # !?!?NAAR DATAQUERY.PY VERPLAATSEN!?!?!?!?!?!?!?!?
+            # Select game data of all players
+            one_person = db.execute("SELECT Username, score, level FROM Users")
 
-        # Create top 10 sorted on level, than score
-        level_and_score = sorted(one_person, key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
+            # Create top 10 sorted on level, than score
+            level_and_score = sorted(one_person, key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
 
-        leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
+            leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
 
-        return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score,
-        current_level=current_level, leaderboard_list=leaderboard_list)
+            return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score,
+            current_level=current_level, leaderboard_list=leaderboard_list)
+
+        except:
+            return redirect("/")
 
 
 @app.route("/", methods=["GET", "POST"])
@@ -208,35 +212,45 @@ def winner():
 #  # telt hoeveel 1en in score
 
     if request.method == "GET":
-        # opponent = session["opponent"]["status"]
-        user = ""
-        for number in session["game_data"]["score"]:
-            user += str(number)
 
-        # Total correct answers by opponent
-        total_opponent = session["opponent"]["status"].count("1")
+        try:
+            # Create string of users score for database
+            user = ""
+            for number in session["game_data"]["score"]:
+                user += str(number)
 
-        # Total correct answers by user
-        total_user = user.count("1")
+             # Total correct answers by user
+            total_user = user.count("1")*10
 
-        total_score = total_user * 10
+            # Total correct answers by opponent
+            total_opponent = session["opponent"]["status"].count("1")
 
-        # Update level of user
-        latest = "pets"
-        if total_user > total_opponent or total_user == 10:
-            latest = session["game_data"]["domain"]
+            # Save played level
+            level = session["game_data"]["domain"]
 
-        # Update level of user as integer
-        latest_level = 1
-        level_dict = {"pets": 1, "farm": 2, "wildlife": 3, "sealife": 4, "insects": 5, "mix it up": 5}
-        for key, value in level_dict.items():
-            if latest == key:
-                latest_level = value
+            # Update level of user
+            latest = "pets"
+            if total_user > total_opponent or total_user == 10:
+                latest = level
 
-        # Update database with new scores
-        finished_game(user, total_score, latest_level)
+            # Update level of user as integer
+            latest_level = 1
+            level_dict = {"pets": 1, "farm": 2, "wildlife": 3, "sealife": 4, "insects": 5, "mix it up": 5}
+            for key, value in level_dict.items():
+                if latest == key:
+                    latest_level = value
 
-        return render_template("winner.html", total_opponent=total_opponent, total_user=total_user, level=session["game_data"]["domain"])
+            # Update database with new scores
+            finished_game(user, total_user, latest_level)
+
+            # Clear game data
+            session["game_data"] = {}
+
+            return render_template("winner.html", total_opponent=total_opponent, total_user=total_user, level=level)
+
+        except:
+            return redirect("index")
+
 
     if request.method == "POST":
         return redirect("index")

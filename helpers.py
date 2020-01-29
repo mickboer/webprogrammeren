@@ -4,8 +4,6 @@ import urllib.request as url
 
 from flask import Flask, flash, jsonify, redirect, render_template, request, session
 
-# ? wat is dit.
-from functools import wraps
 
 def api_request(animal):
     """Get's the image data from Unsplash API when animal name is given and returns individual variables"""
@@ -28,19 +26,13 @@ def api_request(animal):
 
 
 def game_data(aantal_var):
-    """Returns given amount of game data variabele from current game played out of the session data"""
+    """Returns given amount of game data variabeles from current game played out of the session data"""
 
-    # Append the animal name and image name for the next round
-    game_data = [session["game_data"]["rounds"][0]["animal"], session["game_data"]["rounds"][0]["unsplash"]]
+    # Creates a list with the animal name, the image name, round number and current score
+    game_data = [session["game_data"]["rounds"][0]["animal"], session["game_data"]["rounds"][0]["unsplash"],
+    session["game_data"]["round_number"], session["game_data"]["score"]]
 
-    # Append the round number for the next round
-    game_data.append(session["game_data"]["round_number"])
-
-    # Append players score of the current game
-    game_data.append(session["game_data"]["score"])
-    print(session["game_data"]["score"])
-
-    # Return variable needed
+    # Returns variable needed
     if aantal_var == 2:
         return game_data[0], game_data[1]
     elif aantal_var == 3:
