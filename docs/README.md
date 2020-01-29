@@ -8,6 +8,7 @@ Justine de Jong
 ## samenvatting
 Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker spelenderwijs dierennamen leert. De gebruiker voert aan het begin van het spel zijn nickname in. Hieraan worden zijn punten verbonden. De gebruiker kan punten scoren door een quiz te maken. De gebruiker wordt uitgedaagd om bij elk quiz te winnen van zijn tegenstander. Als de gebruiker genoeg punten heeft en een quiz wint of gelijkspeeld dan wordt het volgende level ontgrendeld. De verschillende levels creëren de benodigde verdieping in dit spel. Daarnaast wordt een overzicht van gebruikers en hun behaalde score getoond op een leaderboard.  
 
+
 ## Projectverdeling
 
 **Mick**:
@@ -19,32 +20,46 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 **Justine**:
 
 
-## Screenshots
-![](TD_1.png)
 
-![](TD_2.png)
+## Screenshots computer
+![](1start.png)
 
-![](TD_3.png)
+![](2nickname.png)
 
-![](TD_4.png)
+![](3index.png)
 
-![](TD_5.png)
+![](4question.png)
 
-![](TD_6.png)
+![](5winner.png)
+
+![](6leaderboard.png)
+
+## Screenshots telefoon
+
+![](image0.png)
+
+![](image1.png)
+
+![](image2.png)
+
+![](image3.png)
+
+![](iamge4.png)
+
+![](image5.png)
+
 
 
 
 ## Features
 
 * Registratiepagina 
-
   * De gebruiker kiest een nickname van minimaal 1 letter en maximaal 15 letters.
   
   * deze nickname is voor eenmalig gebruik van het spel. Als de gebruiker uitlogt is deze nickname niet meer beschikbaar. De nickname en de bijbehorende score blijven wel zichtbaar op het leaderboard. 
   
   
 * multiplayer illusion
-
   * Een gebruiker wordt in een "neppe" wachtruime geplaatst om de illusie te wekken dat de gebruiker moet wachten op een tegenstander. 
   
   * Een gebruiker wordt per ronde gekoppelt aan een tegenstander. Deze tegenstander bestaat echt maar is niet live. 
@@ -52,7 +67,6 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
   
  
 * Score systeem
-
   * gebruikers kunnen punten scoren bij een goed beantwoorde vraag
   
   * 10 vragen per quiz.
@@ -81,12 +95,10 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 * log out 
-
- * Op de indexpagina kan de gebruiker uitloggen door de log out button. Hiermee word de gebruiker geredirect naar de startpagina
+  * Op de indexpagina kan de gebruiker uitloggen door de log out button. Hiermee word de gebruiker geredirect naar de startpagina
  
 
 * extra's
-
   * Een leaderboard die de huidige ranglijst met spelers en hun bijbehorende scores geeft.
   
   * Als de gebruiker gewonnen heeft komt hij terecht op de winner's pagina. Hierin staat een leuke afbeelding die verbonden is met de huidige categorie.
@@ -96,16 +108,43 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 
+
 ## Wegwijs door de repository
 
-* application.py
-* helpers.py
-* dataquery.py
-* webprogrammeren.db
-* docs
+**bestanden**
 
-* static
-* templates
+* *application.py*:
+
+* *helpers.py*: bestand met onze helperfuncties (API_request en Gama_data)
+
+* *dataquery.py*: bestand met alle database queries
+
+* *webprogrammeren.db*: onze database met 3 tabellen (users, animals & games)
+
+
+**folders**
+
+* *docs*
+  * READ.ME + plaatjes voor in de READ.ME
+  * TechDesign ( technisch ontwerp) + plaatjes technisch ontwerp
+ 
+
+* *static*
+  * Images: map met plaatjes voor op de site
+ 
+  * page_style: css bestanden per pagina
+ 
+  * winnerpage: gifjes voor op de winner pagina
+ 
+  * styles.css: css hoofdbestand, overkoeplende opmaak
+ 
+  * script.js: bestand met onze java functies
+ 
+
+* *templates*
+  *  Onze html templates
+ 
+
 
 
 ## API
