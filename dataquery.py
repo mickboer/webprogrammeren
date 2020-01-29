@@ -39,10 +39,12 @@ def total_scores():
 def in_use(nickname):
     """Searches in the database if the given username exists"""
 
-    if not db.execute("SELECT Username from Users WHERE Username = :Username", Username=nickname):
-        return True
-    else:
-        return False
+    for username in db.execute("SELECT Username from Users"):
+
+        if username["Username"].lower() == nickname.lower():
+            return False
+
+    return True
 
 def select_opponent():
     """Random select an opponent from the database within given level and create session"""
