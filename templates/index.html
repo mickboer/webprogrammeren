@@ -25,7 +25,7 @@
         <button class="showbutton" type="button" > your score: {{ current_score }}</button>
         <button class="showbutton" type="button" > your level: {{ current_level }}</button>
         <select id="leaderboard" class="showbutton" name="leaderboard">
-            <option disabled class="showbutton" hidden selected value>Leaderboard</option>
+            <option disabled class="showbutton" hidden selected value>Highscores</option>
         </select>
     </tr>
 </table>
@@ -74,7 +74,7 @@
 <div class="bg-modal">
 
     <div class="modal-content">
-    <h2>LEADERBOARD</h2>
+    <h2>Highscores</h2>
     {% for player in leaderboard_list %}
         <option class="showbutton" disabled>Player: {{ player[0] }} level: {{ player[1] }} Score: {{ player[2] }}</option>
     {% endfor %}
