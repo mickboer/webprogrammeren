@@ -72,7 +72,7 @@ def index():
             leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
 
             return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score,
-            current_level=current_level, leaderboard_list=leaderboard_list)
+            current_level=current_level, leaderboard_list=leaderboard_list, user=session["nickname"])
 
         except:
             return redirect("/")

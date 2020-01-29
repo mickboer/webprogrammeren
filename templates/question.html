@@ -1,7 +1,7 @@
 
 {% extends "layout.html" %}
 {% block stylesheets %}
-<link href="/static/style_question.css" rel="stylesheet">
+<link href="/static/page_style/style_question.css" rel="stylesheet">
 {% endblock %}
 {% block title %}
     Questions
@@ -11,7 +11,6 @@
 
 
 
-<body>
 
     <table align="center">
         <col width="45%">
@@ -19,7 +18,7 @@
         <col width="45%">
         <tr>
             <th>{{ player }}</th>
-            <th>VS.</th>
+            <th>vs.</th>
             <th>{{ opponent }}</th>
         </tr>
 
@@ -34,12 +33,12 @@
 
 
     <div>
-        <img class= imgborder src='{{ photo }}'>
+        <img class="imgborder" src="{{ photo }}">
     </div>
 
     <div>
         <credits style="font-size:50%">
-            Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a>
+            <p>Photo by <a href= "{{ name }}">{{ name }}</a> on <a href= "{{ unsplash }}">unsplash</a></p>
         </credits>
     </div>
 
@@ -59,7 +58,7 @@
             </form>
 
             <form name="next_question" action="/question" method="post">
-                <button class= nextbutton type="submit" name="next">Pass</button>
+                <button class="passbutton" type="submit" name="next">Pass</button>
             </form>
 
         </tr>
@@ -68,7 +67,7 @@
 
 
 
-</body>
+
 
 
 

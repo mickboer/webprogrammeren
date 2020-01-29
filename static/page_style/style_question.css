@@ -1,0 +1,102 @@
+table, td, th {
+  text-align: center;
+}
+
+table {
+  border-collapse: collapse;
+  width: 60%;
+}
+
+th {
+  margin: 5px;
+  padding: 5px;
+  font: small-caps bold 25px helvetica;
+  background-color: rgb(145, 194, 49, 0.6);
+  border-radius: 12px;
+  box-shadow: 0 3px #999;
+
+}
+
+td {
+  margin: 10px;
+  padding: 5px;
+  font: small-caps 18px helvetica;
+  background-color: rgb(145, 194, 49, 0.3);
+  border-radius: 12px;
+  padding: 10px ;
+
+
+}
+
+#emptyrow {
+  background-color: rgb(0, 0, 0, 0);
+}
+
+
+/*Sumbmit and pass button*/
+.submitbutton, .passbutton {
+    margin:5px;
+    font: small-caps 15px helvetica;
+    width: 100px;
+    height: 40px;
+
+    cursor: pointer;
+    background-color: rgb(169, 205, 50, 0.8);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+.passbutton {
+    background-color: rgb(252, 61, 3, 0.8);
+}
+
+
+.inputbox {
+  width: 70px;
+  height: 70px;
+  text-align: center;
+  font-size: 40px;
+  margin: 16px ;
+  box-sizing: border-box;
+  border: 7px solid yellowgreen;
+  border-radius: 10px;
+  display: inline-block;
+  align-items: center;
+  background-color: MintCream;
+}
+
+
+
+/*Text style for photo reference link*/
+a {
+    font: 10px helvetica;
+    text-decoration: underline;
+    color: black;
+}
+
+/*Image style*/
+.imgborder
+{
+  border: 10px YellowGreen;
+
+}
+
+
+@media only screen and (max-width: 700px) {
+    table {
+        width: 90%;
+    }
+
+    th {
+        font-size: 20px;
+        background-color: rgb(145, 194, 49, 0.8);
+    }
+
+    td {
+        font-size: 12px;
+        background-color: rgb(145, 194, 49, 0.5);
+    }
+
+
+}
