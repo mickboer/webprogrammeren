@@ -9,10 +9,3 @@
 ![](TD_6.png)
 
 
-[](TD_V3.png)
-![](TD_V2.png)
-![](TD_V1.png)
-
-
-![](TD_API.png)
-
