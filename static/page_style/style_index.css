@@ -3,6 +3,62 @@
 }
 
 
+<<<<<<< HEAD
+/*BUTTONS*/
+.buttons, .lockbuttons {
+
+    margin: 5px;
+    font: small-caps 25px helvetica;
+    cursor: pointer;
+    width: 400px;
+    height: 75px;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+    }
+
+.lockbuttons {
+    color: MintCream;
+    background-color:rgb(154, 205, 50, 0.3);
+    }
+
+
+/*.button:active {transform: translateY(4px);}*/
+/*.lockbuttons:active {transform: translateY(4px);}*/
+.buttons:hover {background-color: rgba(154, 205, 50, 0.9)}
+.button:hover {background-color: rgba(154, 205, 50, 0.9)}
+.submitbutton:hover {background-color: rgba(154, 205, 50)}
+
+
+.showbutton {
+    margin:10px;
+    font-size: 25px;
+    font-variant: small-caps;
+    text-align: center;
+    outline: none;
+    color: black;
+    background-color: rgb(154, 205, 50, 0.6);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+
+
+/*Website style format for small screens*/
+@media only screen and (max-width: 700px) {
+    .buttons, .lockbuttons {
+        /*font-size: 20px;*/
+        width: 90%;
+        background-color: rgb(154, 205, 50, 0.8);
+    }
+
+    .showbutton {
+        max-width: 100%;
+    }
+}
+=======
 .passbutton {
     margin:5px;
     font: small-caps 15px helvetica;
@@ -61,3 +117,4 @@
     transform: rotate(45deg);
     cursor: pointer;
 }
+>>>>>>> bc1621b916f95e75dbe3331879b7250dedf89d57
