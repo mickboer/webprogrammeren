@@ -3,7 +3,7 @@
 }
 
 
-<<<<<<< HEAD
+
 /*BUTTONS*/
 .buttons, .lockbuttons {
 
@@ -58,7 +58,7 @@
         max-width: 100%;
     }
 }
-=======
+
 .passbutton {
     margin:5px;
     font: small-caps 15px helvetica;
@@ -117,4 +117,4 @@
     transform: rotate(45deg);
     cursor: pointer;
 }
->>>>>>> bc1621b916f95e75dbe3331879b7250dedf89d57
+
