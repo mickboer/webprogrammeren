@@ -127,6 +127,16 @@ def nickname():
     else:
         return render_template("nickname.html")
 
+@app.route("/logout", methods=["GET", "POST"])
+def logout():
+    """Log user out"""
+
+    # Forget any user_id
+    session.clear()
+
+    # Redirect user to login form
+    return redirect("/")
+
 
 
 # from index to search opponent
