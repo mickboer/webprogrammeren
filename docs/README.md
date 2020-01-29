@@ -112,14 +112,11 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 **folders**
 
 * *docs*
-
- * READ.ME + plaatjes voor in de READ.ME
- 
- * TechDesign ( technisch ontwerp) + plaatjes technisch ontwerp
+  * READ.ME + plaatjes voor in de READ.ME
+  * TechDesign ( technisch ontwerp) + plaatjes technisch ontwerp
  
 
 * *static*
-
  * Images: map met plaatjes voor op de site
  
  * page_style: css bestanden per pagina
@@ -132,7 +129,6 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
  
 
 * *templates*
- 
  *  Onze html templates
  
 
