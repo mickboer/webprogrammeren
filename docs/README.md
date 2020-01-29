@@ -6,17 +6,17 @@ Justine de Jong
 
 
 ## samenvatting
-Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker spelenderwijs dierennamen leert. De gebruiker voert aan het begin van het spel zijn nickname in. Hieraan worden zijn punten verbonden. De gebruiker kan punten scoren door spelletjes te spelen. De gebruiker wordt uitgedaagd om bij elk spelletje te winnen van zijn tegenstander. Als de gebruiker genoeg punten heeft en een spelletje wint of gelijkspeeld dan wordt het volgende level ontgrendeld. De verschillende levels creëren de benodigde verdieping in dit spel. Daarnaast wordt een overzicht van gebruikers en hun behaalde score getoond op een leaderboard.  
+Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker spelenderwijs dierennamen leert. De gebruiker voert aan het begin van het spel zijn nickname in. Hieraan worden zijn punten verbonden. De gebruiker kan punten scoren door een quiz te maken. De gebruiker wordt uitgedaagd om bij elk quiz te winnen van zijn tegenstander. Als de gebruiker genoeg punten heeft en een quiz wint of gelijkspeeld dan wordt het volgende level ontgrendeld. De verschillende levels creëren de benodigde verdieping in dit spel. Daarnaast wordt een overzicht van gebruikers en hun behaalde score getoond op een leaderboard.  
 
 ## Projectverdeling
 
-### Mick:
+**Mick**:
 
-### Tijn:
+**Tijn**:
 
-### Tijmen:
+**Tijmen**:
 
-### Justine:
+**Justine**:
 
 
 ## Screenshots
@@ -34,41 +34,63 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 
-## Wegwijs door de repository
-
-
 ## Features
-gebruikers kunnen punten scoren bij een goed beantwoorde vraag
 
-gebruikers kunnen punten scoren bij het winnen van een game
+* Registratiepagina 
 
-gebruikers kunnen een levels ontgrendelen 
-
-gebruikers worden per ronde gekoppelt aan een tegenstander 
-
-
-## Score systeem 
-
-### Hoofdlijnen
-10 vragen per quiz
-
-10 punten per juist beantwoorde vraag
-
-Le
+  * De gebruiker kiest een nickname van minimaal 1 letter en maximaal 15 letters.
+  
+  * deze nickname is voor eenmalig gebruik van het spel. Als de gebruiker uitlogt is deze nickname niet meer beschikbaar. De nickname en de bijbehorende score blijven wel zichtbaar op het leaderboard. 
   
   
-### levels
-Level 1: kan altijd gespeeld worden.
+* multiplayer illusion
 
-Level 2: unlocked vanaf 100 punten en level 1 gewonnen of gelijkgespeeld.
+  * gebruikers worden per ronde gekoppelt aan een tegenstander 
+  
 
-Level 3: unlocked vanaf 200 punten en level 2 gewonnen of gelijkgespeeld.
+ 
+* Score systeem
 
-Level 4: unlocked vanaf 300 punten en level 3 gewonnen of gelijkgespeeld.
+  * gebruikers kunnen punten scoren bij een goed beantwoorde vraag
+  
+  * 10 vragen per quiz.
+  
+  * 10 punten per juist beantwoorde vraag.
+  
+  * In totaal kan een gebruiker dus 100 punten behalen in per quiz.
 
-Level 5: unlocked vanaf 400 punten en level 4 gewonnen of gelijkgespeeld.
+  * Een gebruiker kan een quiz winnen, gelijkspelen of verliezen. 
+  
+  * Gebruikers kunnen levels ontgrendelen met bepaalde punten.
+  
 
-Mix: unlocked vanaf 500 punten en level 5 gewonnen of gelijkgespeeld.
+* levels 
+  * *Level 1*: kan altijd gespeeld worden.
+
+  * *Level 2*: unlocked vanaf 100 punten en level 1 gewonnen of gelijkgespeeld.
+
+  * *Level 3*: unlocked vanaf 200 punten en level 2 gewonnen of gelijkgespeeld.
+
+  * *Level 4*: unlocked vanaf 300 punten en level 3 gewonnen of gelijkgespeeld.
+
+  * *Level 5*: unlocked vanaf 400 punten en level 4 gewonnen of gelijkgespeeld.
+
+  * *Mix:* unlocked vanaf 500 punten en level 5 gewonnen of gelijkgespeeld.
+
+
+
+* extra's
+
+  * Een leaderboard die de huidige ranglijst met spelers en hun bijbehorende scores geeft.
+  
+  * Als de gebruiker gewonnen heeft komt hij terecht op de winner's pagina. Hierin staat een leuke afbeelding die verbonden is met de huidige categorie.
+  
+  * Op het beginscherm hebben we een aapje gemaakt die over het scherm slingert.
+
+
+
+
+## Wegwijs door de repository
 
 
 

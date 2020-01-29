@@ -3,6 +3,7 @@
 }
 
 
+<<<<<<< HEAD
 /*BUTTONS*/
 .buttons, .lockbuttons {
 
@@ -57,3 +58,62 @@
         max-width: 100%;
     }
 }
+=======
+.passbutton {
+    margin:5px;
+    font: small-caps 15px helvetica;
+    width: 100px;
+    height: 40px;
+    right: 14px;
+    top: 0;
+    position: absolute;
+    cursor: pointer;
+    background-color: rgb(169, 205, 50, 0.8);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+.passbutton {
+    background-color: rgb(252, 61, 3, 0.7);
+}
+
+.passbutton:hover {background-color: rgba(252, 61, 3)}
+
+
+.bg-modal{
+    width: 100%;
+    height: 100%;
+    background-size: contain;
+    background-attachment: fixed;
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+
+}
+
+.modal-content{
+    width: 550px;
+    height: 350px;
+    background-color: lightblue;
+    opacity: 1;
+    border-radius: 4px;
+    text-align: center;
+    padding: 20px;
+    position: relative;
+
+}
+
+.close{
+    position: absolute;
+    top: 0;
+    right: 14px;
+    font-size: 42px;
+    transform: rotate(45deg);
+    cursor: pointer;
+}
+>>>>>>> bc1621b916f95e75dbe3331879b7250dedf89d57

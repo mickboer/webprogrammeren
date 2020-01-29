@@ -51,18 +51,6 @@ p {
 }
 
 
-/*body .form-control*/
-/*{*/
-    /* center form controls */
-/*    display: inline-block;*/
-
-    /* override Bootstrap's 100% width for form controls */
-/*    width: auto;*/
-/*}*/
-
-
-
-
 /*Website style format for small screens*/
 @media only screen and (max-width: 700px) {
     #logo {
@@ -93,5 +81,6 @@ p {
         font-size: 15px;
     }
 }
+
 
 

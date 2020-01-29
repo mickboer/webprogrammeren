@@ -50,6 +50,7 @@ td {
     background-color: rgb(252, 61, 3, 0.8);
 }
 
+<<<<<<< HEAD
 .nextbutton:hover {background-color: rgba(252, 61, 3)}
 
 
@@ -60,6 +61,11 @@ td {
     border: 7px solid YellowGreen;
     border-radius: 10px;
 }
+=======
+.submitbutton:hover {background-color: rgba(154, 205, 50)}
+.passbutton:hover {background-color: rgba(252, 61, 3)}
+
+>>>>>>> bc1621b916f95e75dbe3331879b7250dedf89d57
 
 .inputbox {
     width: 70px;
