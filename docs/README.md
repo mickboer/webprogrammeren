@@ -39,14 +39,12 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 ## Features
 
 * Registratiepagina 
-
   * De gebruiker kiest een nickname van minimaal 1 letter en maximaal 15 letters.
   
   * deze nickname is voor eenmalig gebruik van het spel. Als de gebruiker uitlogt is deze nickname niet meer beschikbaar. De nickname en de bijbehorende score blijven wel zichtbaar op het leaderboard. 
   
   
 * multiplayer illusion
-
   * Een gebruiker wordt in een "neppe" wachtruime geplaatst om de illusie te wekken dat de gebruiker moet wachten op een tegenstander. 
   
   * Een gebruiker wordt per ronde gekoppelt aan een tegenstander. Deze tegenstander bestaat echt maar is niet live. 
@@ -54,7 +52,6 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
   
  
 * Score systeem
-
   * gebruikers kunnen punten scoren bij een goed beantwoorde vraag
   
   * 10 vragen per quiz.
@@ -83,12 +80,10 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 * log out 
-
- * Op de indexpagina kan de gebruiker uitloggen door de log out button. Hiermee word de gebruiker geredirect naar de startpagina
+  * Op de indexpagina kan de gebruiker uitloggen door de log out button. Hiermee word de gebruiker geredirect naar de startpagina
  
 
 * extra's
-
   * Een leaderboard die de huidige ranglijst met spelers en hun bijbehorende scores geeft.
   
   * Als de gebruiker gewonnen heeft komt hij terecht op de winner's pagina. Hierin staat een leuke afbeelding die verbonden is met de huidige categorie.
