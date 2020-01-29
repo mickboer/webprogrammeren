@@ -45,9 +45,11 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
   
 * multiplayer illusion
 
-  * gebruikers worden per ronde gekoppelt aan een tegenstander 
+  * Een gebruiker wordt in een "neppe" wachtruime geplaatst om de illusie te wekken dat de gebruiker moet wachten op een tegenstander. 
   
-
+  * Een gebruiker wordt per ronde gekoppelt aan een tegenstander. Deze tegenstander bestaat echt maar is niet live. 
+  
+  
  
 * Score systeem
 
@@ -78,6 +80,10 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
   * *Mix:* unlocked vanaf 500 punten en level 5 gewonnen of gelijkgespeeld.
 
 
+* log out 
+
+ * Op de indexpagina kan de gebruiker uitloggen door de log out button. Hiermee word de gebruiker geredirect naar de startpagina
+ 
 
 * extra's
 
@@ -92,8 +98,18 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 ## Wegwijs door de repository
 
+* application.py
+* helpers.py
+* dataquery.py
+* webprogrammeren.db
+* docs
+
+* static
+* templates
 
 
 ## API
 Als API wordt er gebruikt gemaakt van Unsplash.com. Unsplash is een stock photo platform waar fotografen hun foto’s uploaden en deze rechtenvrij gebruikt kunnen worden als er aan de voorwaarden voldaan wordt. Door middel van deze API kan er op basis van een zoekwoord, in ons geval een dier, een foto worden opgehaald en worden getoond aan de gebruiker. Met deze API hebben we 5000 requests per uur om alle spellen te voorzien van foto’s. De voorwaarden voor de API zijn dat de eigenaar en de bron van de afbeelding worden vermeld onder de foto. 
+
+De link die wij gebruiken voor unsplash is: 'https://api.unsplash.com/search/photos?query='animal'&page=1&per_page=1&orientation=landscape&client_id=5246d76723858160b0f3fc3d254a89d4a27144e528dda80235c28c6874cdc014'
 
