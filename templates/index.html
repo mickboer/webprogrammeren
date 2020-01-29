@@ -1,77 +1,77 @@
 {% extends "layout.html" %}
 
+{% block stylesheets %}
+    <link href="/static/page_style/style_index.css" rel="stylesheet">
+{% endblock %}
+
 {% block title %}
     Index
 {% endblock %}
 
 {% block header %}
-{% if session.nickname %}
-<form action="/logout" method="post">
-    <button type="submit" class="btn btn-link">LOG OUT</button>
-</form>
-{% endif %}
+
+    {% if session.nickname %}
+        <form action="/logout" method="post">
+            <button type="submit" class="btn btn-link">LOG OUT</button>
+        </form>
+    {% endif %}
+
 {% endblock %}
 
 {% block main %}
 
-<head>
-    <link href="/static/licon.ico" rel="icon">
-</head>
-
-<body>
 <table>
-<tr>
-<button class= "showbutton" type="button" > your score: {{ current_score }}</button>
-<button class= "showbutton" type="button" > your level: {{ current_level }}</button>
-<select class="showbutton" name="symbol">
-    <option disabled class="showbutton" hidden selected value>Leaderboard</option>
+    <tr>
+        <button class="showbutton" type="button" > your score: {{ current_score }}</button>
+        <button class="showbutton" type="button" > your level: {{ current_level }}</button>
+        <select class="showbutton" name="symbol">
+            <option disabled class="showbutton" hidden selected value>Leaderboard</option>
 
-    {% for player in leaderboard_list %}
-        <option class="showbutton" disabled>Player: {{ player[0] }} level: {{ player[1] }} Score: {{ player[2] }}</option>
-    {% endfor %}
+            {% for player in leaderboard_list %}
+                <option class="showbutton" disabled>Player: {{ player[0] }} level: {{ player[1] }} Score: {{ player[2] }}</option>
+            {% endfor %}
 
-</select>
-</tr>
+        </select>
+    </tr>
 </table>
 
 
 <div class="header">
-  <h1>Categories</h1>
-  <p>Unlock all categories!</p>
+  <h1>Choose your categorie</h1>
+  <h2>Unlock them all!</h2>
 </div>
 
-    <table class="table">
-        <form action="/index" method="post">
-            <table style="width:100%">
+    <form action="/index" method="post">
+        <table id="index_tabel">
+        <tr>
+
+                {% for level, score in dict_level123.items(): %}
+
+                    {% if current_score < score[0] or current_level < score[1]  %}
+                        <button class= "lockbuttons" type="button" value="{{ level }} (locked)">unlock {{ level }} <small class="textunlock">({{score[0]}}points)</small></button>
+
+                    {% else %}
+                        <button class="buttons" name="level" value="{{ level }}" type="submit" data-level="{{ level }}">{{ level }}</button>
+
+                    {% endif %}
+
+                {% endfor %}
+            </tr>
             <tr>
 
-                    {% for level, score in dict_level123.items(): %}
+             {% for level, score in dict_level456.items() %}
 
-                        {% if current_score < score[0] or current_level < score[1]  %}
-                            <button class= "lockbuttons" type="button" value="{{ level }} (locked)">unlock {{ level }} <small class="textunlock">({{score[0]}}points)</small></button>
+                    {% if current_score < score[0] or current_level < score[1] %}
+                        <button class= "lockbuttons" type="button" value="{{ level }} (locked)">unlock {{ level }} <small class="textunlock">({{score[0]}}points)</small></button>
 
-                        {% else %}
+                    {% else %}
 
-                            <button class="buttons" name="level" value="{{ level }}" type="submit" data-level="{{ level }}">{{ level }}</button>
-                        {% endif %}
-
-                    {% endfor %}
-                </tr>
-                <tr>
-
-                 {% for level, score in dict_level456.items() %}
-
-                        {% if current_score < score[0] or current_level < score[1] %}
-                            <button class= "lockbuttons" type="button" value="{{ level }} (locked)">unlock {{ level }} <small class="textunlock">({{score[0]}}points)</small></button>
-
-                        {% else %}
-
-                            <button class="buttons" name="level" value="{{ level }}" type="submit" data-level="{{ level }}">{{ level }}</button>
-                        {% endif %}
-                    {% endfor %}
-                </tr>
-            </table>
+                        <button class="buttons" name="level" value="{{ level }}" type="submit" data-level="{{ level }}">{{ level }}</button>
+                    {% endif %}
+                {% endfor %}
+            </tr>
         </table>
+
     </form>
  </body>
 {% endblock %}

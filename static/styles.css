@@ -4,6 +4,7 @@ html {
 }
 
 body {
+    /*BACKGROUND SETTINGS*/
     /*The image used*/
     background-image: url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
     background-color: lightblue;
@@ -13,10 +14,16 @@ body {
     background-size: contain, contain, contain;
     background-attachment: fixed;
 
-
     /*Center and scale the image nicely*/
     background-position: left center, right center, bottom center;
     background-repeat: no-repeat;
+
+    /*PAGE SETTINGS*/
+    /* scroll horizontally as needed */
+    overflow-x: auto;
+
+    /* center contents */
+    text-align: center;
 
 }
 
@@ -29,9 +36,22 @@ body {
 }
 
 
+/*Text styles*/
+h1 {
+    font: bold 40px helvetica;
+}
+
+h2 {
+    font: bold 25px helvetica;
+}
+
+p {
+    font: 10px helvetica;
+
+}
 
 
-main .form-control
+body .form-control
 {
     /* center form controls */
     display: inline-block;
@@ -40,97 +60,35 @@ main .form-control
     width: auto;
 }
 
-main
-{
-    /* scroll horizontally as needed */
-    overflow-x: auto;
-
-    /* center contents */
-    text-align: center;
-}
-
-main img
-{
-    /*constrain images on small screens */
-    max-width: 100%;
-}
 
 
-.buttons {
-    margin:5px;
-    padding: 20px 100px;
-    font-size: 25px;
-    font-variant: small-caps;
-    text-align: center;
+/*BUTTONS*/
+.buttons, .lockbuttons {
+
+    margin: 5px;
+    font: small-caps 25px helvetica;
     cursor: pointer;
-    outline: none;
     width: 400px;
-    color: black;
+    height: 75px;
     background-color: rgb(154, 205, 50, 0.6);
     border: none;
     border-radius: 12px;
     box-shadow: 0 3px #999;
     }
 
-.buttons:active {transform: translateY(4px);}
-
-
 .lockbuttons {
-    margin:5px;
-    padding: 20px 100px;
-    font-size: 25px;
-    font-variant: small-caps;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    width: 400px;
     color: MintCream;
     background-color:rgb(154, 205, 50, 0.3);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
     }
 
-.button:active {transform: translateY(4px);}
-.lockbuttons:active {transform: translateY(4px);}
-.buttons:hover {background-color: rgba(154, 205, 50, 0.87)}
-.button:hover {background-color: rgba(154, 205, 50, 0.87)}
+
+/*.button:active {transform: translateY(4px);}*/
+/*.lockbuttons:active {transform: translateY(4px);}*/
+.buttons:hover {background-color: rgba(154, 205, 50, 0.9)}
+.button:hover {background-color: rgba(154, 205, 50, 0.9)}
 .submitbutton:hover {background-color: rgba(154, 205, 50)}
 .nextbutton:hover {background-color: rgba(252, 61, 3)}
 
-
-
-
-/*.textunlock*/
-.submitbutton
-{
-    margin:5px;
-    font-size: 18px;
-    font-variant: small-caps;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: black;
-    background-color: rgb(169, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-}
-
-.nextbutton
-{
-    margin:5px;
-    font-size: 18px;
-    font-variant: small-caps;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: black;
-    background-color: rgb(252, 61, 3, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-}
 
 
 .showbutton {
@@ -146,53 +104,6 @@ main img
     box-shadow: 0 3px #999;
 }
 
-
-/*Style voor de input formulieren in het spel*/
-.inputbox {
-  width: 70px;
-  height: 70px;
-  text-align: center;
-  font-size: 40px;
-  margin: 16px ;
-  box-sizing: border-box;
-  border: 7px solid yellowgreen;
-  border-radius: 10px;
-  display: inline-block;
-  align-items: center;
-  background-color: MintCream;
-}
-
-.imgborder
-{
-  border: 5px double YellowGreen;
-
-}
-
-/* style sheet for start page*/
-
-.startbutton
-{
-    margin: 25%;
-    font-size: 12px;
-    font-variant: small-caps;
-    text-align: center;
-    cursor: pointer;
-    outline: none;
-    color: black;
-    background-color: rgb(154, 205, 50, 0.6);
-    border: none;
-    border-radius: 12px;
-    box-shadow: 0 3px #999;
-}
-
-.startbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
-
-.startbackground {
-          background-image: url('/static/dieren2.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-size: cover;
-        }
 
 
 /*Website style format for small screens*/
@@ -216,12 +127,20 @@ main img
         background-repeat: no-repeat;
     }
 
-    .buttons {
-        margin:5px;
+    /*Text styles*/
+    h1 {
+        font-size: 30px;
+    }
+
+    h2 {
         font-size: 15px;
-        width: 250px;
-        border-radius: 12px;
-        box-shadow: 0 3px #999;
+    }
+
+
+    .buttons, .lockbuttons {
+        /*font-size: 20px;*/
+        width: 90%;
+        background-color: rgb(154, 205, 50, 0.8);
     }
 
     /*Style voor de input formulieren in het spel*/
@@ -233,13 +152,9 @@ main img
         margin: 3px ;
     }
 
+    .showbutton {
+        max-width: 100%;
+    }
 }
 
-/* media queries */
-/*@media only screen and (max-width: 768px){*/
-/*    [class*="col-"]{*/
-/*        width:100%;*/
-/*    }*/
-
-/*}*/
 

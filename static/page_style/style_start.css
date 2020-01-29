@@ -1,9 +1,8 @@
 body {
     /*The image used*/
-    background-image: url("monkey.gif"), url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
+    background-image: url("/static/monkey.gif"), url("/static/BG_left.png"), url("/static/BG_right.png"), url("/static/BG_bottom.png");
 
-    /*Full height*/
-    height: 100%;
+    overflow: hidden;
     background-size: contain, contain, contain, contain;
     background-attachment: fixed;
 
@@ -13,15 +12,29 @@ body {
     background-repeat: no-repeat;
 }
 
+#startbutton
+{
+    margin-top: 20%;
+    cursor: pointer;
+    background-color: rgb(154, 205, 50, 0.6);
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+#startimage {
+    width: 300px;
+}
+
+#startbutton:hover {background-color: rgba(154, 205, 50, 0.87)}
+
 
 /*Website style format for small screens*/
 @media only screen and (max-width: 700px) {
     body {
         /*The image used*/
-        background-image: url("monkey.gif"), url("BG_left.png");
+        background-image: url("/static/monkey.gif"), url("/static/BG_left.png");
 
         /*Full height*/
-        height: 100%;
         background-size: contain, contain;
         background-attachment: fixed;
 
@@ -29,5 +42,13 @@ body {
         /*Center and scale the image nicely*/
         background-position: top center, left center;
         background-repeat: no-repeat;
+    }
+
+    #startbutton {
+        margin-top: 75%;
+    }
+
+    #startimage {
+        width: 75%;
     }
 }

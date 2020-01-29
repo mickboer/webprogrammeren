@@ -6,26 +6,24 @@
         <!-- Required meta tags -->
         <meta name="viewport" content="width=device-width, shrink-to-fit=yes">
 
-        <!-- https://favicon.io/emoji-favicons/lion-face/ -->
+        <!--Page icon-->
         <link href="/static/favicon.png" rel="icon">
 
+        <!--stylesheets-->
         <link href="/static/styles.css" rel="stylesheet">
-        <link href="/static/style_start.css" rel="stylesheet">
+        <link href="/static/page_style/style_start.css" rel="stylesheet">
 
-        <title>Animal Kingdom Quiz: Start {% block title %}{% endblock %}</title>
+        <title>Animal Kingdom Quiz: Start</title>
     </head>
 
-    {% block main %}
+
     <body>
-        <main class="container p-5">
+        <form action="/start" method="post">
+            <button id="startbutton" type="submit"><img id="startimage" src="/static/newstart.png"></button>
+        </from>
 
-            <form id="gif_button" action="/start" method="post">
-                <button class="startbutton" type="submit"><img src="/static/newstart.png" width="300" height="100" ></button>
-            </from>
-
-        </main>
     </body>
-    {% endblock %}
+</html>
 
 
 
