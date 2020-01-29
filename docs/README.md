@@ -10,13 +10,13 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 ## Projectverdeling
 
-# Mick:
+### Mick:
 
-# Tijn:
+### Tijn:
 
-# Tijmen:
+### Tijmen:
 
-# Justine:
+### Justine:
 
 
 ## Screenshots
