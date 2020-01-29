@@ -233,14 +233,15 @@ def winner():
             total_user = user.count("1")*10
 
             # Total correct answers by opponent
-            total_opponent = session["opponent"]["status"].count("1")
+            total_opponent = session["opponent"]["status"].count("1")*10
 
-            # Save played level
+            # Save played level and opponent
             level = session["game_data"]["domain"]
+            opponent = session["opponent"]["nickname"]
 
             # Update level of user
             latest = "pets"
-            if total_user > total_opponent or total_user == 10:
+            if total_user > total_opponent or total_user == 100:
                 latest = level
 
             # Update level of user as integer
@@ -255,8 +256,11 @@ def winner():
 
             # Clear game data
             session["game_data"] = {}
+            session["opponent"]["nickname"] = {}
 
-            return render_template("winner.html", total_opponent=total_opponent, total_user=total_user, level=level)
+
+            return render_template("winner.html", total_opponent=total_opponent, total_user=total_user, level=level,
+                user=session["nickname"], opponent=opponent)
 
         except:
             return redirect("index")

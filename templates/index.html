@@ -66,31 +66,33 @@
         </table>
 
     </form>
- </body>
+
 
  <!-- modal section -->
 <div class="bg-modal">
 
     <div class="modal-content">
-    <h1>Highscores</h1>
+        <h1>Highscores</h1>
 
-    <table class="highscore" align="center">
-        <tr class="thead">
-            <th>Player</th>
-            <th>Level</th>
-            <th>Score</th>
-        </tr>
-
-        {% for player in leaderboard_list %}
-            <tr>
-                <td>{{ player[0] }}</td>
-                <td>{{ player[1] }}</td>
-                <td>{{ player[2] }}</td>
+        <table class="highscore" align="center">
+            <tr class="thead">
+                <th>Player</th>
+                <th>Level</th>
+                <th>Score</th>
             </tr>
-        {% endfor %}
-    </table>
 
-    <div class="close">+</div>
+            {% for player in leaderboard_list %}
+                <tr>
+                    <td>{{ player[0] }}</td>
+                    <td>{{ player[1] }}</td>
+                    <td>{{ player[2] }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        <div class="close">+</div>
+    </div>
+</div>
 
 <script>
     document.getElementById('leaderboard').addEventListener('click', function(){
@@ -104,5 +106,5 @@
 </script>
 
 
-</div>
+
 {% endblock %}
