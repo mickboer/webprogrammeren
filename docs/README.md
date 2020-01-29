@@ -8,6 +8,7 @@ Justine de Jong
 ## samenvatting
 Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker spelenderwijs dierennamen leert. De gebruiker voert aan het begin van het spel zijn nickname in. Hieraan worden zijn punten verbonden. De gebruiker kan punten scoren door een quiz te maken. De gebruiker wordt uitgedaagd om bij elk quiz te winnen van zijn tegenstander. Als de gebruiker genoeg punten heeft en een quiz wint of gelijkspeeld dan wordt het volgende level ontgrendeld. De verschillende levels creëren de benodigde verdieping in dit spel. Daarnaast wordt een overzicht van gebruikers en hun behaalde score getoond op een leaderboard.  
 
+
 ## Projectverdeling
 
 **Mick**:
@@ -17,6 +18,7 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 **Tijmen**:
 
 **Justine**:
+
 
 
 ## Screenshots
@@ -96,6 +98,7 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 
 
+
 ## Wegwijs door de repository
 
 **bestanden**
@@ -117,19 +120,19 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
  
 
 * *static*
- * Images: map met plaatjes voor op de site
+  * Images: map met plaatjes voor op de site
  
- * page_style: css bestanden per pagina
+  * page_style: css bestanden per pagina
  
- * winnerpage: gifjes voor op de winner pagina
+  * winnerpage: gifjes voor op de winner pagina
  
- * styles.css: css hoofdbestand, overkoeplende opmaak
+  * styles.css: css hoofdbestand, overkoeplende opmaak
  
- * script.js: bestand met onze java functies
+  * script.js: bestand met onze java functies
  
 
 * *templates*
- *  Onze html templates
+  *  Onze html templates
  
 
 
