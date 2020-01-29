@@ -2,8 +2,6 @@
     width: 100%;
 }
 
-
-
 /*BUTTONS*/
 .buttons, .lockbuttons {
 
@@ -58,6 +56,7 @@
         max-width: 100%;
     }
 }
+
 
 .passbutton {
     margin:5px;
@@ -117,4 +116,20 @@
     transform: rotate(45deg);
     cursor: pointer;
 }
+
+
+/*Website style format for small screens*/
+@media only screen and (max-width: 700px) {
+    .buttons, .lockbuttons {
+        /*font-size: 20px;*/
+        width: 90%;
+        background-color: rgb(154, 205, 50, 0.8);
+    }
+
+    .showbutton {
+        max-width: 100%;
+    }
+}
+
+
 
