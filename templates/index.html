@@ -36,9 +36,8 @@
 
     <form action="/index" method="post">
         <table id="index_tabel">
-        <tr>
-
-                {% for level, score in dict_level123.items(): %}
+            <tr>
+                {% for level, score in dict_level.items(): %}
 
                     {% if current_score < score[0] or current_level < score[1]  %}
                         <button class= "lockbuttons" type="button" value="{{ level }} (locked)">unlock {{ level }} <small class="textunlock">({{score[0]}}points)</small></button>
@@ -48,21 +47,10 @@
 
                     {% endif %}
 
+
                 {% endfor %}
             </tr>
-            <tr>
 
-             {% for level, score in dict_level456.items() %}
-
-                    {% if current_score < score[0] or current_level < score[1] %}
-                        <button class= "lockbuttons" type="button" value="{{ level }} (locked)">unlock {{ level }} <small class="textunlock">({{score[0]}}points)</small></button>
-
-                    {% else %}
-
-                        <button class="buttons" name="level" value="{{ level }}" type="submit" data-level="{{ level }}">{{ level }}</button>
-                    {% endif %}
-                {% endfor %}
-            </tr>
         </table>
 
     </form>

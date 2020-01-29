@@ -53,10 +53,7 @@ def index():
     else:
         try:
             # First 3 levels with required score and level
-            dict_level123 = {"pets": [0, 0], "farm": [100, 1], "wildlife": [200, 2]}
-
-            # Last 3 levels with required score and level
-            dict_level456 = {"sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
+            dict_level = {"pets": [0, 0], "farm": [100, 1], "wildlife": [200, 2], "sealife": [300, 3], "insects": [400, 4], "mix it up": [500, 5]}
 
             # Get current score and level from database via dataquery.py
             current_score, current_level = total_scores()
@@ -71,7 +68,7 @@ def index():
 
             leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
 
-            return render_template("index.html", dict_level123=dict_level123, dict_level456=dict_level456, current_score=current_score,
+            return render_template("index.html", dict_level=dict_level, current_score=current_score,
             current_level=current_level, leaderboard_list=leaderboard_list, user=session["nickname"])
 
         except:
