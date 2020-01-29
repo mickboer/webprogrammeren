@@ -35,7 +35,7 @@ def total_scores():
 
     return current_score, current_level
 
-def game_data():
+def all_game_data():
     """ Get all Usernames, Scores and Levels"""
 
     data = db.execute("SELECT Username, score, level FROM Users")

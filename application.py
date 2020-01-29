@@ -18,7 +18,7 @@ import random
 #from matplotlib import pyplot
 from PIL import Image
 from helpers import api_request, game_data
-from dataquery import quiz_maker, total_scores, in_use, create, select_opponent, finished_game, game_data
+from dataquery import quiz_maker, total_scores, in_use, create, select_opponent, finished_game, all_game_data
 
 # Configure application
 app = Flask(__name__)
@@ -59,8 +59,7 @@ def index():
             current_score, current_level = total_scores()
 
             # Create top 10 sorted on level, than score
-            level_and_score = sorted(game_data(), key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
-
+            level_and_score = sorted(all_game_data(), key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
             leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
 
             return render_template("index.html", dict_level=dict_level, current_score=current_score,

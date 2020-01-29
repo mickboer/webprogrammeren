@@ -11,17 +11,10 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 ## Projectverdeling
 
-**Mick**:
-
-**Tijn**:
-
-**Tijmen**:
-
-**Justine**:
+Binnen de groep is er veel samengewerkt. Iedereen heeft op dezelfde wijze bijgedragen aan het project. Er is bijvoorbeeld  niet iemand geweest die heeft gefocust op de lay-out of iemand meer op de database. Wij hebben elke dag een lijstje gemaakt met taken en eerlijk verdeeld over de groep. Natuurlijk was er ruimte voor eigen iniatief en die is zeker getoond. 
 
 
-
-## Screenshots computer
+## Screenshots
 ![](1start.png)
 
 ![](2nickname.png)
@@ -33,21 +26,6 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 ![](5winner.png)
 
 ![](6leaderboard.png)
-
-## Screenshots telefoon
-
-![](image0.jpeg =100)
-
-![](image1.jpeg =50)
-
-![](image2.jpeg)
-
-![](image3.jpeg)
-
-![](iamge4.jpeg)
-
-![](image5.jpeg)
-
 
 
 
@@ -63,7 +41,6 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
   * Een gebruiker wordt in een "neppe" wachtruime geplaatst om de illusie te wekken dat de gebruiker moet wachten op een tegenstander. 
   
   * Een gebruiker wordt per ronde gekoppelt aan een tegenstander. Deze tegenstander bestaat echt maar is niet live. 
-  
   
  
 * Score systeem
@@ -113,7 +90,7 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 **bestanden**
 
-* *application.py*:
+* *application.py* 
 
 * *helpers.py*: bestand met onze helperfuncties (API_request en Gama_data)
 
