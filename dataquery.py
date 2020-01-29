@@ -35,6 +35,12 @@ def total_scores():
 
     return current_score, current_level
 
+def game_data():
+    """ Get all Usernames, Scores and Levels"""
+
+    data = db.execute("SELECT Username, score, level FROM Users")
+
+    return data
 
 def in_use(nickname):
     """Searches in the database if the given username exists"""
@@ -45,6 +51,7 @@ def in_use(nickname):
             return False
 
     return True
+
 
 def select_opponent():
     """Random select an opponent from the database within given level and create session"""
