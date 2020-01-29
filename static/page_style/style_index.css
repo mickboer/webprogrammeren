@@ -1,3 +1,24 @@
 #index_tabel {
     width: 100%;
 }
+
+.passbutton {
+    margin:5px;
+    font: small-caps 15px helvetica;
+    width: 100px;
+    height: 40px;
+    right: 14px;
+    top: 0;
+    position: absolute;
+    cursor: pointer;
+    background-color: rgb(169, 205, 50, 0.8);
+    border: none;
+    border-radius: 12px;
+    box-shadow: 0 3px #999;
+}
+
+.passbutton {
+    background-color: rgb(252, 61, 3, 0.7);
+}
+
+.passbutton:hover {background-color: rgba(252, 61, 3)}

@@ -51,6 +51,9 @@ td {
     background-color: rgb(252, 61, 3, 0.8);
 }
 
+.submitbutton:hover {background-color: rgba(154, 205, 50)}
+.passbutton:hover {background-color: rgba(252, 61, 3)}
+
 
 .inputbox {
   width: 70px;
