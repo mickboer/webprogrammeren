@@ -158,41 +158,7 @@ body .form-control
 }
 
 
-.bg-modal{
-    width: 100%;
-    height: 100%;
-    background-size: contain;
-    background-attachment: fixed;
-    background-color: rgba(0, 0, 0, 0.7);
-    position: absolute;
-    top: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    display: none;
 
-}
-
-.modal-content{
-    width: 500px;
-    height: 300px;
-    background-color: white;
-    opacity: 1;
-    border-radius: 4px;
-    text-align: center;
-    padding: 20px;
-    position: relative;
-
-}
-
-.close{
-    position: absolute;
-    top: 0;
-    right: 14px;
-    font-size: 42px;
-    transform: rotate(45deg);
-    cursor: pointer;
-}
 /* media queries */
 /*@media only screen and (max-width: 768px){*/
 /*    [class*="col-"]{*/
