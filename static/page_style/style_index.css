@@ -42,22 +42,6 @@
     box-shadow: 0 3px #999;
 }
 
-
-
-/*Website style format for small screens*/
-@media only screen and (max-width: 700px) {
-    .buttons, .lockbuttons {
-        /*font-size: 20px;*/
-        width: 90%;
-        background-color: rgb(154, 205, 50, 0.8);
-    }
-
-    .showbutton {
-        max-width: 100%;
-    }
-}
-
-
 .passbutton {
     margin:5px;
     font: small-caps 15px helvetica;
