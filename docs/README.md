@@ -14,7 +14,7 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 Binnen de groep is er veel samengewerkt. Iedereen heeft op dezelfde wijze bijgedragen aan het project. Er is bijvoorbeeld  niet iemand geweest die heeft gefocust op de lay-out of iemand meer op de database. Wij hebben elke dag een lijstje gemaakt met taken en eerlijk verdeeld over de groep. Natuurlijk was er ruimte voor eigen iniatief en die is zeker getoond. 
 
 
-## Screenshots computer
+## Screenshots
 ![](1start.png)
 
 ![](2nickname.png)
