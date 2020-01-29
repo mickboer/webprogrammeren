@@ -36,9 +36,9 @@ Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker s
 
 ## Screenshots telefoon
 
- [](image0.jpeg)
+![](image0.jpeg =100x20)
 
-[](image1.jpeg)
+![](image1.jpeg = 50x10)
 
 ![](image2.jpeg)
 
