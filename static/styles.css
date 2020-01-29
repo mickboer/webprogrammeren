@@ -6,7 +6,7 @@ html {
 body {
     /*BACKGROUND SETTINGS*/
     /*The image used*/
-    background-image: url("BG_left.png"), url("BG_right.png"), url("BG_bottom.png");
+    background-image: url("images/BG_left.png"), url("images/BG_right.png"), url("images/BG_bottom.png");
     background-color: lightblue;
 
     /*Full height*/
@@ -59,7 +59,7 @@ p {
 
     body {
     /*The image used*/
-        background-image: url("BG_left.png");
+        background-image: url("images/BG_left.png");
 
         /*Full height*/
         height: 100%;

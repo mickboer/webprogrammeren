@@ -1,6 +1,6 @@
 body {
     /*The image used*/
-    background-image: url("/static/monkey.gif"), url("/static/BG_left.png"), url("/static/BG_right.png"), url("/static/BG_bottom.png");
+    background-image: url("/static/images/monkey.gif"), url("/static/images/BG_left.png"), url("/static/images/BG_right.png"), url("/static/images/BG_bottom.png");
 
     overflow: hidden;
     background-size: contain, contain, contain, contain;
@@ -32,7 +32,7 @@ body {
 @media only screen and (max-width: 700px) {
     body {
         /*The image used*/
-        background-image: url("/static/monkey.gif"), url("/static/BG_left.png");
+        background-image: url("/static/images/monkey.gif"), url("/static/images/BG_left.png");
 
         /*Full height*/
         background-size: contain, contain;
