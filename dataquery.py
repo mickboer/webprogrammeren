@@ -14,7 +14,6 @@ db = SQL("sqlite:///webprogrammeren.db")
 def quiz_maker(level):
     """Creates a ten question quiz on input level from animal quize database"""
 
-    # current_level = db.execute("SELECT level FROM Users WHERE Username = :Username", Username=session["nickname"])[0]["level"]
     if level == "mix it up":
         animalrows = db.execute("SELECT animal, unsplash FROM animals")
         return random.sample(animalrows, 10)
@@ -46,8 +45,11 @@ def in_use(nickname):
 def select_opponent():
     """Random select an opponent from the database within given level and create session"""
 
-    session["opponent"] = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
-
+    opponent = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
+    if opponent == session["nickname"]:
+        select_opponent()
+    else:
+        session["opponent"] = opponent
 
 # DATABASE INSERTS
 def create(nickname):
