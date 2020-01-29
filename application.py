@@ -18,7 +18,7 @@ import random
 #from matplotlib import pyplot
 from PIL import Image
 from helpers import api_request, game_data
-from dataquery import quiz_maker, total_scores, in_use, create, select_opponent, finished_game
+from dataquery import quiz_maker, total_scores, in_use, create, select_opponent, finished_game, all_game_data
 
 # Configure application
 app = Flask(__name__)
@@ -58,14 +58,8 @@ def index():
             # Get current score and level from database via dataquery.py
             current_score, current_level = total_scores()
 
-
-            # !?!?NAAR DATAQUERY.PY VERPLAATSEN!?!?!?!?!?!?!?!?
-            # Select game data of all players
-            one_person = db.execute("SELECT Username, score, level FROM Users")
-
             # Create top 10 sorted on level, than score
-            level_and_score = sorted(one_person, key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
-
+            level_and_score = sorted(all_game_data(), key=lambda k: (k['level'], k["score"]), reverse=True)[0:10]
             leaderboard_list = [(player["Username"], player["level"], player["score"]) for player in level_and_score]
 
             return render_template("index.html", dict_level=dict_level, current_score=current_score,
@@ -112,7 +106,7 @@ def nickname():
         # Check if nickname is in us
         if in_use(nickname) == False:
 
-            return ("Nickname already in use")
+            return redirect("nickname")
 
         # Create a session for the user and save to database
         else:
@@ -123,6 +117,19 @@ def nickname():
 
     else:
         return render_template("nickname.html")
+
+
+@app.route("/check", methods=["GET"])
+def check():
+    nickname = request.args.get("nickname")
+    rows = db.execute("SELECT * FROM Users WHERE Username=:Username", Username=nickname)
+
+    # Check is username exists
+    if len(rows) != 0:
+        return jsonify(False)
+    else:
+        return jsonify(True)
+
 
 @app.route("/logout", methods=["GET", "POST"])
 def logout():
