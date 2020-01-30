@@ -7,6 +7,7 @@ Justine de Jong
 
 ## samenvatting
 Onze applicatie *"Animal Kingdom Quiz"* is een trivia spel waarin de gebruiker spelenderwijs dierennamen leert. De gebruiker voert aan het begin van het spel zijn nickname in. Hieraan worden zijn punten verbonden. De gebruiker kan punten scoren door een quiz te maken. De gebruiker wordt uitgedaagd om bij elk quiz te winnen van zijn tegenstander. Als de gebruiker genoeg punten heeft en een quiz wint of gelijkspeeld dan wordt het volgende level ontgrendeld. De verschillende levels creëren de benodigde verdieping in dit spel. Daarnaast wordt een overzicht van gebruikers en hun behaalde score getoond op een leaderboard.  
+Zie hier de uitleg video van de *"Animal Kindom Quiz"* : https://www.youtube.com/watch?v=cM_k7hSSPLg&feature=youtu.be
 
 
 ## Projectverdeling
