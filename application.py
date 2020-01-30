@@ -244,12 +244,12 @@ def winner():
             opponent = session["opponent"]["nickname"]
 
             # Update level of user
-            latest = "pets"
+            latest = "null"
             if total_user > total_opponent or total_user == 100:
                 latest = level
 
             # Update level of user as integer
-            latest_level = 1
+            latest_level = 0
             level_dict = {"pets": 1, "farm": 2, "wildlife": 3, "sealife": 4, "insects": 5, "mix it up": 5}
             for key, value in level_dict.items():
                 if latest == key:

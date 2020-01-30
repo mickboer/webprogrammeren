@@ -9,6 +9,7 @@ from flask import Flask, flash, jsonify, redirect, render_template, request, ses
 # Configure CS50 Library to use SQLite database
 db = SQL("sqlite:///webprogrammeren.db")
 
+
 # DATABASE SELECTS
 
 def quiz_maker(level):
@@ -35,12 +36,14 @@ def total_scores():
 
     return current_score, current_level
 
+
 def all_game_data():
     """ Get all Usernames, Scores and Levels"""
 
     data = db.execute("SELECT Username, score, level FROM Users")
 
     return data
+
 
 def in_use(nickname):
     """Searches in the database if the given username exists"""
@@ -57,10 +60,13 @@ def select_opponent():
     """Random select an opponent from the database within given level and create session"""
 
     opponent = random.choice(db.execute("SELECT * FROM game WHERE level= :domain", domain=session["game_data"]["domain"]))
-    if opponent == session["nickname"]:
+
+    # Check if player is not playing against himself
+    if opponent["nickname"] == session["nickname"]:
         select_opponent()
     else:
         session["opponent"] = opponent
+
 
 # DATABASE INSERTS
 def create(nickname):
@@ -72,8 +78,20 @@ def create(nickname):
 def finished_game(user, total_user, latest_level):
     """Updates the database with the played game information"""
 
+    # Saves game data into database
     db.execute("INSERT INTO game (nickname, status, level) VALUES (:nickname, :status, :level)",
     nickname=session["nickname"], status=user, level=session["game_data"]["domain"])
 
-    db.execute("UPDATE Users SET score = score + :total_user, level = :level WHERE Username = :Username",
-    Username=session["nickname"], total_user=int(total_user), level=latest_level)
+    # Gets highest reached of users
+    highest_level = db.execute("SELECT level FROM Users WHERE Username= :Username", Username=session["nickname"])
+
+    # Check is won level is higher and updates level if so
+    if int(highest_level[0]['level']) < latest_level:
+
+        db.execute("UPDATE Users SET score = score + :total_user, level = :level WHERE Username = :Username",
+        Username=session["nickname"], total_user=int(total_user), level=latest_level)
+
+    else:
+
+        db.execute("UPDATE Users SET score = score + :total_user WHERE Username = :Username",
+        Username=session["nickname"], total_user=int(total_user))
