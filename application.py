@@ -40,15 +40,18 @@ db = SQL("sqlite:///webprogrammeren.db")
 def index():
 
     if request.method == "POST":
+        try:
+            # Creates random list of 10 animal with choosen level in dataquery.py
+            level = request.form.get("level")
+            quiz = quiz_maker(level)
 
-        # Creates random list of 10 animal with choosen level in dataquery.py
-        level = request.form.get("level")
-        quiz = quiz_maker(level)
+            # Saves the current game data in a Session
+            session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
 
-        # Saves the current game data in a Session
-        session["game_data"] = {"domain": level, "round_number": 1, "rounds": quiz, "score": []}
+            return redirect("search")
 
-        return redirect("search")
+        except:
+            return redirect("index")
 
     else:
         try:
