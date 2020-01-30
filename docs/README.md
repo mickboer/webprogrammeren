@@ -50,7 +50,7 @@ Binnen de groep is er veel samengewerkt. Iedereen heeft op dezelfde wijze bijged
   
   * 10 punten per juist beantwoorde vraag.
   
-  * In totaal kan een gebruiker dus 100 punten behalen in per quiz.
+  * In totaal kan een gebruiker dus 100 punten behalen per quiz.
 
   * Een gebruiker kan een quiz winnen, gelijkspelen of verliezen. 
   
